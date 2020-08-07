@@ -49,6 +49,35 @@ with st.echo():
     if st.checkbox('Show content'):
         'Any set of text or widgets'
 
+# '# Spinner'
+
+# if st.checkbox('Show spinner'):
+#     import time
+
+#     with st.echo():
+#         with st.spinner('Wait for it...'):
+#             time.sleep(5)
+#         st.success('Done!')
+
+'# Progress bar'
+
+if st.checkbox('Show progress bar'):
+    import time
+
+    'Starting a long computation...'
+
+    # Add a placeholder
+    latest_iteration = st.empty()
+    bar = st.progress(0)
+
+    for i in range(100):
+      # Update the progress bar with each iteration.
+      latest_iteration.text(f'Iteration {i+1}')
+      bar.progress(i + 1)
+      time.sleep(0.1)
+
+    '...and now we\'re done!'
+
 '# Select box'
 
 with st.echo():
@@ -173,3 +202,7 @@ with st.echo():
     fig = go.Figure(data=[go.Surface(z=z, x=x, y=y)])
     fig.update_layout(title='IRR', autosize=False, width=800, height=800, margin=dict(l=40, r=40, b=40, t=40))
     st.plotly_chart(fig)
+
+'# Screencast'
+
+'Top right'
