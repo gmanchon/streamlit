@@ -175,6 +175,45 @@ with st.echo():
 
 '# Using sections'
 
+SECTION_CSS = """
+.wagon-container {
+    display: flex;
+}
+
+.left, .right {
+    width: 500px;
+    height: 500px;
+}
+
+.left {
+    background-color: red;
+}
+
+.right {
+    background-color: green;
+}
+"""
+
+SECTION_HTML = """
+<div class="wagon-container">
+    <div class="left">
+    </div>
+    <div class="right">
+    </div>
+</div>
+"""
+
+INJECTED_HTML = f"""
+<style>
+{SECTION_CSS}
+</style>
+{SECTION_HTML}
+"""
+
+st.write(INJECTED_HTML, unsafe_allow_html=True)
+
+'# Using sections'
+
 if st.checkbox('Show teachers'):
     image_size = st.slider('Zoom', 50, 250, 119)
 
