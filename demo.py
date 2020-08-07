@@ -13,6 +13,8 @@ with st.echo():
 
 '# Markdown'
 
+'Markdown allows to structure your app into sections'
+
 with st.echo():
     """
     # title
@@ -24,6 +26,8 @@ with st.echo():
     """
 
 '# Code'
+
+'Display blocks of executed code'
 
 with st.echo():
     with st.echo():
@@ -131,20 +135,28 @@ with st.echo():
     h1 {
         color: red;
     }
+    body {
+        background-image: url(https://avatars1.githubusercontent.com/u/9978111?v=4);
+        background-size: cover;
+    }
     """
 
     if st.checkbox('Inject CSS'):
         st.write(f'<style>{CSS}</style>', unsafe_allow_html=True)
 
-'# Scrapping! 🥳'
+'# Scrapping Le Wagon Privacy Policy! 🥳'
 
-with st.echo():
-    import requests
-    from bs4 import BeautifulSoup
+if st.checkbox('Inject the CSS for the privacy policy 😋'):
+    st.write('<link href="https://www.iubenda.com/assets/privacy_policy-4925cabc28812855d7c0a24b1f0c961c.css" media="screen" rel="stylesheet" type="text/css" />', unsafe_allow_html=True)
 
-    response = requests.get('https://www.iubenda.com/privacy-policy/7967062/legal')
+if st.checkbox('Inject the privacy policy 😋'):
+    with st.echo():
+        import requests
+        from bs4 import BeautifulSoup
 
-    soup = BeautifulSoup(response.content, 'html.parser')
-    content = soup.select('#wbars')
+        response = requests.get('https://www.iubenda.com/privacy-policy/7967062/legal')
 
-    st.write(str(content), unsafe_allow_html=True)
+        soup = BeautifulSoup(response.content, 'html.parser')
+        content = soup.select('#wbars_all')
+
+        st.write(f'<div id="iubenda_policy" class="iubenda_fixed_policy">{str(content)}</div>', unsafe_allow_html=True)
