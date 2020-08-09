@@ -41,7 +41,18 @@ with st.echo():
       'second column': np.arange(10, 101, 10)
     })
 
+    st.table(df.head())
+
     df
+
+'## Using Pandas Styler'
+
+with st.echo():
+    dataframe = pd.DataFrame(
+        np.random.randn(10, 20),
+        columns=('col %d' % i for i in range(20)))
+
+    st.dataframe(dataframe.style.highlight_max(axis=0))
 
 '# Check box'
 
@@ -78,6 +89,16 @@ if st.checkbox('Show progress bar'):
 
     '...and now we\'re done!'
 
+'# button'
+
+with st.echo():
+    if st.button('click me'):
+        # print is visible in server output, not in the page
+        print('button clicked!')
+        'I was clicked 🎉'
+    else:
+        'I was not clicked 😞'
+
 '# Select box'
 
 with st.echo():
@@ -100,6 +121,18 @@ with st.echo():
             columns=['a', 'b', 'c'])
 
     st.line_chart(df)
+
+'# Bar chart'
+
+with st.echo():
+    df = pd.DataFrame(
+            np.random.randn(200, 1),
+            columns=['a'])
+
+    hist_values = np.histogram(
+        df.a, bins=25)[0]
+
+    st.bar_chart(hist_values)
 
 '# Map'
 
@@ -334,3 +367,9 @@ with st.echo():
 '# Screencast'
 
 'Top right'
+
+'# Magnificent balloons'
+
+with st.echo():
+    if st.button('More 🎈🎈🎈 please!'):
+        st.balloons()
