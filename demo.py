@@ -8,6 +8,8 @@ import pandas as pd
 
 'You should prefer the [official API reference](https://docs.streamlit.io/en/stable/api.html)'
 
+'# Menu'
+
 TOC_CSS = """
 .toc {
     display: flex;
@@ -59,7 +61,7 @@ TOC_HTML = """
             <li><a href="#Sidebar">Sidebar</a></li>
             <li><a href="#Styling your pages with CSS 🤩">Styling your pages with CSS 🤩</a></li>
             <!--<li><a href="#Using sections">Using sections</a></li>-->
-            <li><a href="#Using sections">Using sections</a></li>
+            <li><a href="#Injecting HTML 🧙‍♂️">Injecting HTML 🧙‍♂️</a></li>
             <li><a href="#Scrapping Le Wagon Privacy Policy! 🥳">Scrapping Le Wagon Privacy Policy! 🥳</a></li>
             <li><a href="#Matplotlib">Matplotlib</a></li>
             <li><a href="#Plotly">Plotly</a></li>
@@ -223,7 +225,7 @@ with st.echo():
 
 # st.write(f'<a name="Spinner"></a>', unsafe_allow_html=True)
 
-'# Spinner'
+# '# Spinner'
 
 # if st.checkbox('Show spinner'):
 #     import time
@@ -237,22 +239,23 @@ st.write(f'<a name="Progress bar"></a>', unsafe_allow_html=True)
 
 '# Progress bar'
 
-if st.checkbox('Show progress bar'):
-    import time
+with st.echo():
+    if st.checkbox('Show progress bar'):
+        import time
 
-    'Starting a long computation...'
+        'Starting a long computation...'
 
-    # Add a placeholder
-    latest_iteration = st.empty()
-    bar = st.progress(0)
+        # Add a placeholder
+        latest_iteration = st.empty()
+        bar = st.progress(0)
 
-    for i in range(100):
-      # Update the progress bar with each iteration.
-      latest_iteration.text(f'Iteration {i+1}')
-      bar.progress(i + 1)
-      time.sleep(0.1)
+        for i in range(100):
+          # Update the progress bar with each iteration.
+          latest_iteration.text(f'Iteration {i+1}')
+          bar.progress(i + 1)
+          time.sleep(0.1)
 
-    '...and now we\'re done!'
+        '...and now we\'re done!'
 
 st.write(f'<a name="button"></a>', unsafe_allow_html=True)
 
@@ -472,7 +475,7 @@ with st.echo():
     if st.checkbox('Inject CSS'):
         st.write(f'<style>{CSS}</style>', unsafe_allow_html=True)
 
-st.write(f'<a name="Using sections"></a>', unsafe_allow_html=True)
+# st.write(f'<a name="Using sections"></a>', unsafe_allow_html=True)
 
 # '# Using sections'
 
@@ -523,9 +526,9 @@ st.write(f'<a name="Using sections"></a>', unsafe_allow_html=True)
 
 # st.write(INJECTED_HTML_BOTTOM, unsafe_allow_html=True)
 
-# st.write(f'<a name="Using sections"></a>', unsafe_allow_html=True)
+st.write(f'<a name="Injecting HTML 🧙‍♂️"></a>', unsafe_allow_html=True)
 
-'# Using sections'
+'# Injecting HTML 🧙‍♂️'
 
 if st.checkbox('Show teachers'):
     image_size = st.slider('Zoom', 50, 250, 119)
