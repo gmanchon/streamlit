@@ -4,6 +4,79 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 
+'# Streamlit quick reference'
+
+'You should prefer the [official API reference](https://docs.streamlit.io/en/stable/api.html)'
+
+TOC_CSS = """
+.toc {
+    display: flex;
+}
+.toc div {
+    width: 50%;
+}
+"""
+st.write(f'<style>{TOC_CSS}</style>', unsafe_allow_html=True)
+
+TOC_HTML = """
+<div class="toc">
+    <div class="left-toc">
+        <ul>
+            <li><a href="#Inline documentation">Inline documentation</a></li>
+            <li><a href="#Magic commands">Magic commands</a></li>
+            <li><a href="#Text">Text</a></li>
+            <li><a href="#Markdown">Markdown</a></li>
+            <li><a href="#Latex">Latex</a></li>
+            <li><a href="#Functions">Functions</a></li>
+            <li><a href="#Objects">Objects</a></li>
+            <li><a href="#Json">Json</a></li>
+            <li><a href="#Echo">Echo</a></li>
+            <li><a href="#Code">Code</a></li>
+            <li><a href="#DataFrame">DataFrame</a></li>
+            <li><a href="#Check box">Check box</a></li>
+            <li><a href="#Radio">Radio</a></li>
+            <!--<li><a href="#Spinner">Spinner</a></li>-->
+            <li><a href="#Progress bar">Progress bar</a></li>
+            <li><a href="#button">button</a></li>
+            <li><a href="#Select box, multi select">Select box, multi select</a></li>
+            <li><a href="#Slider">Slider</a></li>
+            <li><a href="#Text input">Text input</a></li>
+            <li><a href="#Text area">Text area</a></li>
+            <li><a href="#Number input">Number input</a></li>
+            <li><a href="#Date input">Date input</a></li>
+        </ul>
+    </div>
+    <div class="right-toc">
+        <ul>
+            <li><a href="#Time input">Time input</a></li>
+            <li><a href="#File uploader">File uploader</a></li>
+            <li><a href="#Error, warning, info, success">Error, warning, info, success</a></li>
+            <li><a href="#Line chart">Line chart</a></li>
+            <li><a href="#Area chart">Area chart</a></li>
+            <li><a href="#Bar chart">Bar chart</a></li>
+            <li><a href="#Map">Map</a></li>
+            <li><a href="#Cache">Cache</a></li>
+            <li><a href="#Sidebar">Sidebar</a></li>
+            <li><a href="#Styling your pages with CSS 🤩">Styling your pages with CSS 🤩</a></li>
+            <li><a href="#Using sections">Using sections</a></li>
+            <li><a href="#Using sections">Using sections</a></li>
+            <li><a href="#Scrapping Le Wagon Privacy Policy! 🥳">Scrapping Le Wagon Privacy Policy! 🥳</a></li>
+            <li><a href="#Matplotlib">Matplotlib</a></li>
+            <li><a href="#Plotly">Plotly</a></li>
+            <li><a href="#Altair, Vega Lite, Bokeh, pydeck, Deck GL, Graphviz">Altair, Vega Lite, Bokeh, pydeck, Deck GL, Graphviz</a></li>
+            <li><a href="#Images, Audio, Video">Images, Audio, Video</a></li>
+            <li><a href="#Screencast">Screencast</a></li>
+            <li><a href="#Magnificent balloons">Magnificent balloons</a></li>
+            <li><a href="#Inspiration">Inspiration</a></li>
+        </ul>
+    </div>
+</div>
+"""
+
+st.write(TOC_HTML, unsafe_allow_html=True)
+
+st.write(f'<a name="Inline documentation"></a>', unsafe_allow_html=True)
+
 '# Inline documentation'
 
 'Any streamlit method called without parenthesis and arguments will display its documentation'
@@ -11,15 +84,21 @@ import pandas as pd
 with st.echo():
     st.echo
 
+st.write(f'<a name="Magic commands"></a>', unsafe_allow_html=True)
+
 '# Magic commands'
 
 with st.echo():
     'some text or **markdown**'
 
+st.write(f'<a name="Text"></a>', unsafe_allow_html=True)
+
 '# Text'
 
 with st.echo():
     st.text('hello')
+
+st.write(f'<a name="Markdown"></a>', unsafe_allow_html=True)
 
 '# Markdown'
 
@@ -35,6 +114,8 @@ with st.echo():
     - bullet points
     """)
 
+st.write(f'<a name="Latex"></a>', unsafe_allow_html=True)
+
 '# Latex'
 
 with st.echo():
@@ -43,6 +124,8 @@ with st.echo():
         \sum_{k=0}^{n-1} ar^k =
         a \left(\frac{1-r^{n}}{1-r}\right)
         ''')
+
+st.write(f'<a name="Functions"></a>', unsafe_allow_html=True)
 
 '# Functions'
 
@@ -53,12 +136,16 @@ with st.echo():
 
     st.write(fun)
 
+st.write(f'<a name="Objects"></a>', unsafe_allow_html=True)
+
 '# Objects'
 
 with st.echo():
     dictionary = { 'a' : 1, 'b' : 2 }
 
     st.write(dictionary)
+
+st.write(f'<a name="Json"></a>', unsafe_allow_html=True)
 
 '# Json'
 
@@ -75,6 +162,8 @@ with st.echo():
     '''
     st.json(seb)
 
+st.write(f'<a name="Echo"></a>', unsafe_allow_html=True)
+
 '# Echo'
 
 'Display blocks of executed code'
@@ -83,6 +172,8 @@ with st.echo():
     with st.echo():
         st.write('hey')
 
+st.write(f'<a name="Code"></a>', unsafe_allow_html=True)
+
 '# Code'
 
 with st.echo():
@@ -90,6 +181,8 @@ with st.echo():
     def function sum(a, b):
         return a + b
     ''')
+
+st.write(f'<a name="DataFrame"></a>', unsafe_allow_html=True)
 
 '# DataFrame'
 
@@ -112,11 +205,15 @@ with st.echo():
 
     st.dataframe(dataframe.style.highlight_max(axis=0))
 
+st.write(f'<a name="Check box"></a>', unsafe_allow_html=True)
+
 '# Check box'
 
 with st.echo():
     if st.checkbox('Show content'):
         'Any set of text or widgets'
+
+st.write(f'<a name="Radio"></a>', unsafe_allow_html=True)
 
 '# Radio'
 
@@ -124,7 +221,9 @@ with st.echo():
     direction = st.radio('Select a direction', ('top', 'right', 'bottom', 'left'))
     direction
 
-# '# Spinner'
+# st.write(f'<a name="Spinner"></a>', unsafe_allow_html=True)
+
+'# Spinner'
 
 # if st.checkbox('Show spinner'):
 #     import time
@@ -133,6 +232,8 @@ with st.echo():
 #         with st.spinner('Wait for it...'):
 #             time.sleep(5)
 #         st.success('Done!')
+
+st.write(f'<a name="Progress bar"></a>', unsafe_allow_html=True)
 
 '# Progress bar'
 
@@ -153,6 +254,8 @@ if st.checkbox('Show progress bar'):
 
     '...and now we\'re done!'
 
+st.write(f'<a name="button"></a>', unsafe_allow_html=True)
+
 '# button'
 
 with st.echo():
@@ -163,12 +266,16 @@ with st.echo():
     else:
         'I was not clicked 😞'
 
+st.write(f'<a name="Select box, multi select"></a>', unsafe_allow_html=True)
+
 '# Select box, multi select'
 
 with st.echo():
     option = st.selectbox('Select a line to filter', df['first column'])
 
     df[df['first column'] == option]
+
+st.write(f'<a name="Slider"></a>', unsafe_allow_html=True)
 
 '# Slider'
 
@@ -177,11 +284,15 @@ with st.echo():
 
     df[df['first column'] % option == 0]
 
+st.write(f'<a name="Text input"></a>', unsafe_allow_html=True)
+
 '# Text input'
 
 with st.echo():
     title = st.text_input('Movie title', 'Life of Brian')
     st.write('The current movie title is', title)
+
+st.write(f'<a name="Text area"></a>', unsafe_allow_html=True)
 
 '# Text area'
 
@@ -192,11 +303,15 @@ with st.echo():
         ''')
     st.write('Length:', len(txt))
 
+st.write(f'<a name="Number input"></a>', unsafe_allow_html=True)
+
 '# Number input'
 
 with st.echo():
     number = st.number_input('Insert a number')
     st.write('The current number is ', number)
+
+st.write(f'<a name="Date input"></a>', unsafe_allow_html=True)
 
 '# Date input'
 
@@ -207,11 +322,15 @@ with st.echo():
         datetime.date(2019, 7, 6))
     st.write('Your birthday is:', d)
 
+st.write(f'<a name="Time input"></a>', unsafe_allow_html=True)
+
 '# Time input'
 
 with st.echo():
     t = st.time_input('Set an alarm for', datetime.time(8, 45))
     st.write('Alarm is set for', t)
+
+st.write(f'<a name="File uploader"></a>', unsafe_allow_html=True)
 
 '# File uploader'
 
@@ -222,10 +341,14 @@ with st.echo():
         data = pd.read_csv(uploaded_file)
         st.write(data)
 
+st.write(f'<a name="Error, warning, info, success"></a>', unsafe_allow_html=True)
+
 '# Error, warning, info, success'
 
 with st.echo():
     st.success('This is a success message!')
+
+st.write(f'<a name="Line chart"></a>', unsafe_allow_html=True)
 
 '# Line chart'
 
@@ -236,6 +359,8 @@ with st.echo():
 
     st.line_chart(df)
 
+st.write(f'<a name="Area chart"></a>', unsafe_allow_html=True)
+
 '# Area chart'
 
 with st.echo():
@@ -245,6 +370,8 @@ with st.echo():
 
     st.area_chart(chart_data)
 
+
+st.write(f'<a name="Bar chart"></a>', unsafe_allow_html=True)
 
 '# Bar chart'
 
@@ -265,6 +392,8 @@ with st.echo():
 
     st.bar_chart(chart_data)
 
+st.write(f'<a name="Map"></a>', unsafe_allow_html=True)
+
 '# Map'
 
 with st.echo():
@@ -273,6 +402,8 @@ with st.echo():
         columns=['lat', 'lon'])
 
     st.map(map_df)
+
+st.write(f'<a name="Cache"></a>', unsafe_allow_html=True)
 
 '# Cache'
 
@@ -313,6 +444,8 @@ new['a'] = cached_df['a'] / option
 
 st.line_chart(new)
 
+st.write(f'<a name="Sidebar"></a>', unsafe_allow_html=True)
+
 '# Sidebar'
 
 with st.echo():
@@ -320,6 +453,8 @@ with st.echo():
         # Title
         Selected option: {option}
         """)
+
+st.write(f'<a name="Styling your pages with CSS 🤩"></a>', unsafe_allow_html=True)
 
 '# Styling your pages with CSS 🤩'
 
@@ -336,6 +471,8 @@ with st.echo():
 
     if st.checkbox('Inject CSS'):
         st.write(f'<style>{CSS}</style>', unsafe_allow_html=True)
+
+st.write(f'<a name="Using sections"></a>', unsafe_allow_html=True)
 
 '# Using sections'
 
@@ -375,6 +512,8 @@ INJECTED_HTML = f"""
 """
 
 st.write(INJECTED_HTML, unsafe_allow_html=True)
+
+st.write(f'<a name="Using sections"></a>', unsafe_allow_html=True)
 
 '# Using sections'
 
@@ -465,6 +604,8 @@ if st.checkbox('Show teachers'):
 
     st.write(TEACHER_HTML, unsafe_allow_html=True)
 
+st.write(f'<a name="Scrapping Le Wagon Privacy Policy! 🥳"></a>', unsafe_allow_html=True)
+
 '# Scrapping Le Wagon Privacy Policy! 🥳'
 
 if st.checkbox('Inject the CSS for the privacy policy 😋'):
@@ -482,6 +623,8 @@ if st.checkbox('Inject the privacy policy 😋'):
 
         st.write(f'<div id="iubenda_policy" class="iubenda_fixed_policy">{str(content)}</div>', unsafe_allow_html=True)
 
+st.write(f'<a name="Matplotlib"></a>', unsafe_allow_html=True)
+
 '# Matplotlib'
 
 with st.echo():
@@ -492,6 +635,8 @@ with st.echo():
     plt.imshow(face, cmap='gray')
 
     st.pyplot()
+
+st.write(f'<a name="Plotly"></a>', unsafe_allow_html=True)
 
 '# Plotly'
 
@@ -505,6 +650,8 @@ with st.echo():
     fig = go.Figure(data=[go.Surface(z=z, x=x, y=y)])
     fig.update_layout(title='IRR', autosize=False, width=800, height=800, margin=dict(l=40, r=40, b=40, t=40))
     st.plotly_chart(fig)
+
+st.write(f'<a name="Altair, Vega Lite, Bokeh, pydeck, Deck GL, Graphviz"></a>', unsafe_allow_html=True)
 
 '# Altair, Vega Lite, Bokeh, pydeck, Deck GL, Graphviz'
 
@@ -522,6 +669,8 @@ with st.echo():
 
     st.write(c)
 
+st.write(f'<a name="Images, Audio, Video"></a>', unsafe_allow_html=True)
+
 '# Images, Audio, Video'
 
 with st.echo():
@@ -529,12 +678,22 @@ with st.echo():
     image = Image.open('wagon.png')
     st.image(image, caption='Le Wagon', use_column_width=False)
 
+st.write(f'<a name="Screencast"></a>', unsafe_allow_html=True)
+
 '# Screencast'
 
 'Top right'
+
+st.write(f'<a name="Magnificent balloons"></a>', unsafe_allow_html=True)
 
 '# Magnificent balloons'
 
 with st.echo():
     if st.button('More 🎈🎈🎈 please!'):
         st.balloons()
+
+st.write(f'<a name="Inspiration"></a>', unsafe_allow_html=True)
+
+'# Inspiration'
+
+'[Multipage navigation](https://awesome-streamlit.org/)'
