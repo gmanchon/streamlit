@@ -58,7 +58,7 @@ TOC_HTML = """
             <li><a href="#Cache">Cache</a></li>
             <li><a href="#Sidebar">Sidebar</a></li>
             <li><a href="#Styling your pages with CSS 🤩">Styling your pages with CSS 🤩</a></li>
-            <li><a href="#Using sections">Using sections</a></li>
+            <!--<li><a href="#Using sections">Using sections</a></li>-->
             <li><a href="#Using sections">Using sections</a></li>
             <li><a href="#Scrapping Le Wagon Privacy Policy! 🥳">Scrapping Le Wagon Privacy Policy! 🥳</a></li>
             <li><a href="#Matplotlib">Matplotlib</a></li>
@@ -474,46 +474,56 @@ with st.echo():
 
 st.write(f'<a name="Using sections"></a>', unsafe_allow_html=True)
 
-'# Using sections'
+# '# Using sections'
 
-SECTION_CSS = """
-.wagon-container {
-    display: flex;
-}
+# SECTION_CSS = """
+# .wagon-container {
+#     display: flex;
+# }
 
-.left, .right {
-    width: 500px;
-    height: 500px;
-}
+# .left, .right {
+#     width: 500px;
+#     height: 500px;
+# }
 
-.left {
-    background-color: red;
-}
+# .left {
+#     background-color: red;
+# }
 
-.right {
-    background-color: green;
-}
-"""
+# .right {
+#     background-color: green;
+# }
+# """
 
-SECTION_HTML = """
-<div class="wagon-container">
-    <div class="left">
-    </div>
-    <div class="right">
-    </div>
-</div>
-"""
+# INJECTED_HTML_TOP = f"""
+# <style>
+# {SECTION_CSS}
+# </style>
+# <div class="wagon-container">
+#     <div class="left">
+# """
 
-INJECTED_HTML = f"""
-<style>
-{SECTION_CSS}
-</style>
-{SECTION_HTML}
-"""
+# st.write(INJECTED_HTML_TOP, unsafe_allow_html=True)
 
-st.write(INJECTED_HTML, unsafe_allow_html=True)
+# 'coucou'
 
-st.write(f'<a name="Using sections"></a>', unsafe_allow_html=True)
+# INJECTED_HTML_MIDDLE = f"""
+#     </div>
+#     <div class="right">
+# """
+
+# st.write(INJECTED_HTML_MIDDLE, unsafe_allow_html=True)
+
+# 'mon loulou'
+
+# INJECTED_HTML_BOTTOM = f"""
+#     </div>
+# </div>
+# """
+
+# st.write(INJECTED_HTML_BOTTOM, unsafe_allow_html=True)
+
+# st.write(f'<a name="Using sections"></a>', unsafe_allow_html=True)
 
 '# Using sections'
 
