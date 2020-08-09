@@ -11,27 +11,85 @@ import pandas as pd
 with st.echo():
     st.echo
 
+'# Magic commands'
+
+with st.echo():
+    'some text or **markdown**'
+
+'# Text'
+
+with st.echo():
+    st.text('hello')
+
 '# Markdown'
 
 'Markdown allows to structure your app into sections'
 
 with st.echo():
-    """
+    st.markdown("""
     # title
 
     ## many levels of subtitles
 
     **bold** or *italic* text with [links](http://github.com/streamlit) and:
     - bullet points
-    """
+    """)
 
-'# Code'
+'# Latex'
+
+with st.echo():
+    st.latex(r'''
+        a + ar + a r^2 + a r^3 + \cdots + a r^{n-1} =
+        \sum_{k=0}^{n-1} ar^k =
+        a \left(\frac{1-r^{n}}{1-r}\right)
+        ''')
+
+'# Functions'
+
+with st.echo():
+    def fun(a, b):
+        '''docstring of the function'''
+        return a + b
+
+    st.write(fun)
+
+'# Objects'
+
+with st.echo():
+    dictionary = { 'a' : 1, 'b' : 2 }
+
+    st.write(dictionary)
+
+'# Json'
+
+with st.echo():
+    seb = '''
+        {
+          "login": "ssaunier",
+          "id": 414418,
+          "node_id": "MDQ6VXNlcjQxNDQxOA==",
+          "avatar_url": "https://avatars3.githubusercontent.com/u/414418?v=4",
+          "created_at": "2010-09-24T13:31:21Z",
+          "updated_at": "2020-08-08T14:26:53Z"
+        }
+    '''
+    st.json(seb)
+
+'# Echo'
 
 'Display blocks of executed code'
 
 with st.echo():
     with st.echo():
         st.write('hey')
+
+'# Code'
+
+with st.echo():
+    st.code('''
+    def function sum(a, b):
+        return a + b
+    ''')
 
 '# DataFrame'
 
@@ -59,6 +117,12 @@ with st.echo():
 with st.echo():
     if st.checkbox('Show content'):
         'Any set of text or widgets'
+
+'# Radio'
+
+with st.echo():
+    direction = st.radio('Select a direction', ('top', 'right', 'bottom', 'left'))
+    direction
 
 # '# Spinner'
 
@@ -99,7 +163,7 @@ with st.echo():
     else:
         'I was not clicked 😞'
 
-'# Select box'
+'# Select box, multi select'
 
 with st.echo():
     option = st.selectbox('Select a line to filter', df['first column'])
@@ -113,6 +177,56 @@ with st.echo():
 
     df[df['first column'] % option == 0]
 
+'# Text input'
+
+with st.echo():
+    title = st.text_input('Movie title', 'Life of Brian')
+    st.write('The current movie title is', title)
+
+'# Text area'
+
+with st.echo():
+    txt = st.text_area('Text to analyze', '''
+        It was the best of times, it was the worst of times, it was
+        the age of wisdom, it was the age of foolishness, (...)
+        ''')
+    st.write('Length:', len(txt))
+
+'# Number input'
+
+with st.echo():
+    number = st.number_input('Insert a number')
+    st.write('The current number is ', number)
+
+'# Date input'
+
+with st.echo():
+    import datetime
+    d = st.date_input(
+        "When's your birthday",
+        datetime.date(2019, 7, 6))
+    st.write('Your birthday is:', d)
+
+'# Time input'
+
+with st.echo():
+    t = st.time_input('Set an alarm for', datetime.time(8, 45))
+    st.write('Alarm is set for', t)
+
+'# File uploader'
+
+with st.echo():
+    st.set_option('deprecation.showfileUploaderEncoding', False)
+    uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
+    if uploaded_file is not None:
+        data = pd.read_csv(uploaded_file)
+        st.write(data)
+
+'# Error, warning, info, success'
+
+with st.echo():
+    st.success('This is a success message!')
+
 '# Line chart'
 
 with st.echo():
@@ -121,6 +235,16 @@ with st.echo():
             columns=['a', 'b', 'c'])
 
     st.line_chart(df)
+
+'# Area chart'
+
+with st.echo():
+    chart_data = pd.DataFrame(
+        np.random.randn(20, 3),
+        columns=['a', 'b', 'c'])
+
+    st.area_chart(chart_data)
+
 
 '# Bar chart'
 
@@ -133,6 +257,13 @@ with st.echo():
         df.a, bins=25)[0]
 
     st.bar_chart(hist_values)
+
+with st.echo():
+    chart_data = pd.DataFrame(
+        np.random.randn(50, 3),
+        columns=["a", "b", "c"])
+
+    st.bar_chart(chart_data)
 
 '# Map'
 
@@ -351,6 +482,17 @@ if st.checkbox('Inject the privacy policy 😋'):
 
         st.write(f'<div id="iubenda_policy" class="iubenda_fixed_policy">{str(content)}</div>', unsafe_allow_html=True)
 
+'# Matplotlib'
+
+with st.echo():
+    import matplotlib.pyplot as plt
+
+    from scipy import misc
+    face = misc.face(gray=True)
+    plt.imshow(face, cmap='gray')
+
+    st.pyplot()
+
 '# Plotly'
 
 with st.echo():
@@ -363,6 +505,29 @@ with st.echo():
     fig = go.Figure(data=[go.Surface(z=z, x=x, y=y)])
     fig.update_layout(title='IRR', autosize=False, width=800, height=800, margin=dict(l=40, r=40, b=40, t=40))
     st.plotly_chart(fig)
+
+'# Altair, Vega Lite, Bokeh, pydeck, Deck GL, Graphviz'
+
+with st.echo():
+    import pandas as pd
+    import numpy as np
+    import altair as alt
+
+    df = pd.DataFrame(
+        np.random.randn(200, 3),
+        columns=['a', 'b', 'c'])
+
+    c = alt.Chart(df).mark_circle().encode(
+        x='a', y='b', size='c', color='c', tooltip=['a', 'b', 'c'])
+
+    st.write(c)
+
+'# Images, Audio, Video'
+
+with st.echo():
+    from PIL import Image
+    image = Image.open('wagon.png')
+    st.image(image, caption='Le Wagon', use_column_width=False)
 
 '# Screencast'
 
