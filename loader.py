@@ -1,3 +1,7 @@
+"""
+loads all scripts in the components directory
+retrieves their info and executes their run function
+"""
 
 import streamlit as st
 
