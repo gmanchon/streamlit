@@ -60,14 +60,29 @@ def load_script(script):
 
     # retrieve script title
     if hasattr(module, 'title'):
-        script['title'] = module.title()
+        script_title = module.title()
     else:
         # convert file name to title name
-        script['title'] = split(script_path)[1].strip('.py').replace('_', ' ').capitalize()
+        script_title = split(script_path)[1].strip('.py').replace('_', ' ').capitalize()
 
-    # run script
+    # create script anchor for sidebar link
+    st.write(f'<a name="{script_title}"></a>', unsafe_allow_html=True)
+
+    # insert script title in page
+    st.markdown(f'# {script_title}')
+
+    # insert script content in page through its run function
     if hasattr(module, 'run'):
         module.run()
+
+    # fill script info
+    script['title'] = script_title
+
+def populate_sidebar(scripts):
+    """
+    adds links to the content of the scripts in the sidebar
+    """
+    pass
 
 def load_components():
     """
@@ -83,5 +98,8 @@ def load_components():
     # load each script
     for script in scripts:
         load_script(script)
+
+    # fill sidebar with links to script content
+    populate_sidebar(scripts)
 
     st.write(scripts)
