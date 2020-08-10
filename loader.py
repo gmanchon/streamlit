@@ -49,7 +49,6 @@ def load_script(script):
     script is expected to respond to the `title` and `run` functions
     """
 
-    a = 1
     script_path = script['path']
     module_name = script_path.replace('/', '.')
 
