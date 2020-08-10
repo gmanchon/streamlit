@@ -4,6 +4,7 @@ from setuptools import setup
 REQUIRED_PACKAGES = [
     'numpy==1.18.4',
     'pandas==0.24.2',
+    'matplotlib==3.2.1',
     'scipy==1.2.2',
     'streamlit==0.64.0']
 
