@@ -1,12 +1,12 @@
 """
 loads all scripts in the components directory
-retrieves their info and executes their run function
+retrieves their title and executes their run function
 """
 
 import streamlit as st
 
 from os import listdir
-from os.path import isfile, isdir, join
+from os.path import isfile, isdir, join, split
 
 import importlib.util
 
@@ -31,7 +31,11 @@ def recursive_iterate_directories(path, level):
         if isdir(entry_path):
             scripts += recursive_iterate_directories(entry_path, level + 1)
 
-        # iterating through files in the component directory
+        # ignoring non script files
+        if entry_path[-3:] != '.py':
+            continue
+
+        # adding script files to the result
         if isfile(entry_path):
             scripts += [{
                 'path' : entry_path
@@ -42,9 +46,10 @@ def recursive_iterate_directories(path, level):
 def load_script(script):
     """
     loads and executes script content
-    script is expected to respond to the `info` and `run` functions
+    script is expected to respond to the `title` and `run` functions
     """
 
+    a = 1
     script_path = script['path']
     module_name = script_path.replace('/', '.')
 
@@ -54,9 +59,12 @@ def load_script(script):
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
 
-    # retrieve script info
-    if hasattr(module, 'info'):
-        script['info'] = module.info()
+    # retrieve script title
+    if hasattr(module, 'title'):
+        script['title'] = module.title()
+    else:
+        # convert file name to title name
+        script['title'] = split(script_path)[1].strip('.py').replace('_', ' ').capitalize()
 
     # run script
     if hasattr(module, 'run'):
