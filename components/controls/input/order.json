@@ -1,0 +1,15 @@
+[
+    "check_box",
+    "radio",
+    "progress_bar",
+    "button",
+    "select_box",
+    "slider",
+    "text_input",
+    "text_area",
+    "number_input",
+    "date_input",
+    "time_input",
+    "file_uploader",
+    "error"
+]

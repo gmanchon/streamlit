@@ -75,6 +75,11 @@ def recursive_iterate_directories(path, level):
     # ordering scripts specified in the order json file
     for script in order:
 
+        # ignoring typos
+        if script not in container_scripts:
+            print(f'there is a typo in {path}/order.json 🤬')
+            continue
+
         script_element = container_scripts[script]
         del(container_scripts[script])
         ordered_containers.append(script_element)
@@ -96,6 +101,13 @@ def recursive_iterate_directories(path, level):
 def file_name_to_title(file_path):
     return split(file_path)[1].strip('.py').replace('_', ' ').capitalize()
 
+def get_node_anchor(node):
+
+    if 'title' in node:
+        return node['title'].capitalize()
+
+    return file_name_to_title(node['name']).capitalize()
+
 def load_script(script):
     """
     loads and executes script content
@@ -113,10 +125,10 @@ def load_script(script):
 
     # retrieve script title
     if hasattr(module, 'title'):
-        script_title = module.title()
+        script_title = module.title().capitalize()
     else:
         # convert file name to title name
-        script_title = file_name_to_title(script_path)
+        script_title = file_name_to_title(script_path).capitalize()
 
     # create script anchor for sidebar link
     st.write(f'<a name="{script_title}"></a>', unsafe_allow_html=True)
@@ -136,7 +148,7 @@ def populate_sidebar(nodes):
     adds links to the content of the scripts in the sidebar
     """
 
-    toc = """<ul>"""
+    toc = ''
 
     # create sidebar table of content
     for node in nodes:
@@ -151,15 +163,11 @@ def populate_sidebar(nodes):
             if node_level >= 3:
                 node_level += 2
 
-            toc += f"""</ul>
-            <h{node_level}>{node_name}</h{node_level}>
-            <ul>"""
+            toc += f"""<h{node_level}>{node_name}</h{node_level}>"""
 
         elif node_type == 'script':
-            anchor = file_name_to_title(node['name'])
-            toc += f"""<li><a href="#{anchor}">{anchor}</a></li>"""
-
-    toc += '</ul>'
+            anchor = get_node_anchor(node)
+            toc += f"""<a href="#{anchor}">{anchor}</a><br>"""
 
     st.sidebar.markdown(toc, unsafe_allow_html=True)
 
@@ -186,4 +194,4 @@ def load_components():
     # fill sidebar with links to script content
     populate_sidebar(nodes)
 
-    st.write(nodes)
+    # st.write(nodes)
