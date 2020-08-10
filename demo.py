@@ -4,6 +4,10 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 
+from loader import load_components
+
+load_components()
+
 from sidebar import render_sidebar
 
 render_sidebar()
@@ -16,6 +20,8 @@ render_sidebar()
 
 with st.echo():
     import streamlit as st
+
+st.write(f'<a name="Inline documentation"></a>', unsafe_allow_html=True)
 
 '# Inline documentation'
 

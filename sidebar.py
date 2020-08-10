@@ -80,5 +80,3 @@ def render_sidebar():
     """
 
     st.sidebar.markdown(TOC_HTML, unsafe_allow_html=True)
-
-    st.write(f'<a name="Inline documentation"></a>', unsafe_allow_html=True)
