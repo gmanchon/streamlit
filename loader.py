@@ -10,13 +10,32 @@ from os.path import isfile, isdir, join, split
 
 import importlib.util
 
+import json
+
 def recursive_iterate_directories(path, level):
     """
     recursively iterates through directories
     returns a list of script files with attributes
     """
 
-    scripts = []
+    containers = {
+        'title' : {
+            'type' : 'title',
+            'name' : split(path)[1],
+            'level' : level,
+        },
+        'sections' : [],
+        'scripts' : {}
+    }
+
+    # loading order json file
+    order = []
+    order_path = join(path, 'order.json')
+
+    if isfile(order_path):
+
+        with open(order_path) as json_file:
+            order = json.load(json_file)
 
     # iterating through the content of the directory
     for entry in listdir(path):
@@ -25,11 +44,15 @@ def recursive_iterate_directories(path, level):
         if entry == '__pycache__':
             continue
 
+        # ignore order file
+        if entry == 'order.json':
+            continue
+
         entry_path = join(path, entry)
 
         # recursion on directories
         if isdir(entry_path):
-            scripts += recursive_iterate_directories(entry_path, level + 1)
+            containers['sections'] += recursive_iterate_directories(entry_path, level + 1)
 
         # ignoring non script files
         if entry_path[-3:] != '.py':
@@ -37,11 +60,41 @@ def recursive_iterate_directories(path, level):
 
         # adding script files to the result
         if isfile(entry_path):
-            scripts += [{
+            script_name = entry[:-3]
+            containers['scripts'][script_name] = {
+                'type' : 'script',
+                'name' : script_name,
                 'path' : entry_path
-            }]
+            }
 
-    return scripts
+    # changing scripts order according to order json file
+    container_scripts = containers['scripts']
+
+    ordered_containers = []
+
+    # ordering scripts specified in the order json file
+    for script in order:
+
+        script_element = container_scripts[script]
+        del(container_scripts[script])
+        ordered_containers.append(script_element)
+
+    # adding unspecified scripts at the end in the same order
+    for key, value in container_scripts.items():
+
+        ordered_containers.append(value)
+
+    # buiding node list
+    nodes = []
+
+    nodes.append(containers['title'])
+    nodes += containers['sections']
+    nodes += ordered_containers
+
+    return nodes
+
+def file_name_to_title(file_path):
+    return split(file_path)[1].strip('.py').replace('_', ' ').capitalize()
 
 def load_script(script):
     """
@@ -63,7 +116,7 @@ def load_script(script):
         script_title = module.title()
     else:
         # convert file name to title name
-        script_title = split(script_path)[1].strip('.py').replace('_', ' ').capitalize()
+        script_title = file_name_to_title(script_path)
 
     # create script anchor for sidebar link
     st.write(f'<a name="{script_title}"></a>', unsafe_allow_html=True)
@@ -78,11 +131,37 @@ def load_script(script):
     # fill script info
     script['title'] = script_title
 
-def populate_sidebar(scripts):
+def populate_sidebar(nodes):
     """
     adds links to the content of the scripts in the sidebar
     """
-    pass
+
+    toc = """<ul>"""
+
+    # create sidebar table of content
+    for node in nodes:
+
+        node_type = node['type']
+
+        if node_type == 'title':
+
+            node_name = node['name'].capitalize()
+            node_level = node['level']
+
+            if node_level >= 3:
+                node_level += 2
+
+            toc += f"""</ul>
+            <h{node_level}>{node_name}</h{node_level}>
+            <ul>"""
+
+        elif node_type == 'script':
+            anchor = file_name_to_title(node['name'])
+            toc += f"""<li><a href="#{anchor}">{anchor}</a></li>"""
+
+    toc += '</ul>'
+
+    st.sidebar.markdown(toc, unsafe_allow_html=True)
 
 def load_components():
     """
@@ -90,16 +169,21 @@ def load_components():
     """
 
     components_path = 'components'
-    components_level = 0
+    components_level = 1
 
     # retrieve the list of script files
-    scripts = recursive_iterate_directories(components_path, components_level)
+    nodes = recursive_iterate_directories(components_path, components_level)
 
     # load each script
-    for script in scripts:
-        load_script(script)
+    for node in nodes:
+
+        # ignore non scripts
+        if node['type'] != 'script':
+            continue
+
+        load_script(node)
 
     # fill sidebar with links to script content
-    populate_sidebar(scripts)
+    populate_sidebar(nodes)
 
-    st.write(scripts)
+    st.write(nodes)
