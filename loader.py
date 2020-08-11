@@ -197,6 +197,10 @@ def load_components():
 
         load_script(node)
 
+    # the sidebar widgets in the components scripts gets injected in the sidebar
+    # before the menu links because the scripts are loaded first
+    # it is required to load the scripts first to retrieve their custom title
+
     # fill sidebar with links to script content
     populate_sidebar(nodes)
 
