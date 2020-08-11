@@ -13,16 +13,12 @@ from loader import load_components
 with st.echo():
     import streamlit as st
 
-st.write(f'<a name="Magic commands"></a>', unsafe_allow_html=True)
-
 '# Magic commands'
 
 'All strings in the **main** script file will be rendered in the page as markdown. Other script files need to use `st.write` or `st.markdown` in order to render text'
 
 with st.echo():
     'some text or **markdown**'
-
-st.write(f'<a name="Echo"></a>', unsafe_allow_html=True)
 
 '# Echo'
 
