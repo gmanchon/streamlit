@@ -98,15 +98,19 @@ def recursive_iterate_directories(path, level):
 
     return nodes
 
+def file_root_to_title(file_root):
+    return file_root.replace('_', ' ').capitalize()
+
 def file_name_to_title(file_path):
-    return split(file_path)[1].strip('.py').replace('_', ' ').capitalize()
+    file_root = split(file_path)[1][:-3] # remove path then remove .py
+    return file_root_to_title(file_root)
 
 def get_node_anchor(node):
 
     if 'title' in node:
         return node['title'].capitalize()
 
-    return file_name_to_title(node['name']).capitalize()
+    return file_root_to_title(node['name'])
 
 def load_script(script):
     """
@@ -128,7 +132,7 @@ def load_script(script):
         script_title = module.title().capitalize()
     else:
         # convert file name to title name
-        script_title = file_name_to_title(script_path).capitalize()
+        script_title = file_name_to_title(script_path)
 
     # create script anchor for sidebar link
     st.write(f'<a name="{script_title}"></a>', unsafe_allow_html=True)
