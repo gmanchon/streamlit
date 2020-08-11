@@ -3,7 +3,9 @@ import streamlit as st
 
 def run():
 
-    st.write('work in progress 🚧')
+    st.write('🚧 work in progress 🚧')
+
+    st.write('If you find out how to mess with the page layout using flexbox, grid, or any kind of CSS or JS, please ping me 😉')
 
 # st.write(f'<a name="Using sections"></a>', unsafe_allow_html=True)
 

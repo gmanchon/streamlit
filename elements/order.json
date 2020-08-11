@@ -2,9 +2,9 @@
   "text",
   "code",
   "controls",
-  "charts",
-  "layout",
-  "advanced",
+  "data",
   "third party",
+  "advanced",
+  "layout",
   "other"
 ]

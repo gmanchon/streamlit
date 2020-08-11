@@ -6,22 +6,27 @@ import pandas as pd
 
 def run():
 
+    st.write('## Default rendering')
+
     with st.echo():
         df = pd.DataFrame({
           'first column': list(range(1, 11)),
           'second column': np.arange(10, 101, 10)
         })
 
-        st.table(df.head())
-
         st.write(df)
 
-    st.write('## Using Pandas Styler')
+    st.write('## Using a table')
 
     with st.echo():
-        dataframe = pd.DataFrame(
+        st.table(df.head())
+
+    st.write('## Using pandas styler')
+
+    with st.echo():
+        df = pd.DataFrame(
             np.random.randn(10, 20),
             columns=('col %d' % i for i in range(20)))
 
-        st.dataframe(dataframe.style.highlight_max(axis=0))
+        st.dataframe(df.style.highlight_max(axis=0))
 

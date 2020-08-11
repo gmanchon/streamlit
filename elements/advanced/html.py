@@ -6,6 +6,8 @@ def title():
 
 def run():
 
+    st.write('If you really want to go crazy with the content, why not inject a custom HTML element?')
+
     if st.checkbox('Show teachers'):
         image_size = st.slider('Zoom', 50, 250, 119)
 

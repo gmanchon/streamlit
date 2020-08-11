@@ -6,6 +6,8 @@ def title():
 
 def run():
 
+    st.write('As an intermediary step between streamlit and pulling a micro or full web framework with Flask or Django, you can customize your app to a large extent using CSS')
+
     with st.echo():
         CSS = """
         h1 {

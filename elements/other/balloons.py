@@ -6,6 +6,8 @@ def title():
 
 def run():
 
+    st.write('You\'re welcome 🙌')
+
     with st.echo():
         if st.button('More 🎈🎈🎈 please!'):
             st.balloons()

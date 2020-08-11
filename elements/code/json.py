@@ -1,6 +1,9 @@
 
 import streamlit as st
 
+def title():
+    return 'Json {}'
+
 def run():
 
     with st.echo():
