@@ -28,16 +28,6 @@ st.write(f'<a name="Magic commands"></a>', unsafe_allow_html=True)
 with st.echo():
     'some text or **markdown**'
 
-st.write(f'<a name="Echo"></a>', unsafe_allow_html=True)
-
-'# Echo'
-
-'Display a block of executed code'
-
-with st.echo():
-    with st.echo():
-        st.write('hello 👋')
-
 st.write(f'<a name="Inline documentation"></a>', unsafe_allow_html=True)
 
 '# Inline documentation'
@@ -46,6 +36,16 @@ st.write(f'<a name="Inline documentation"></a>', unsafe_allow_html=True)
 
 with st.echo():
     st.echo
+
+st.write(f'<a name="Echo"></a>', unsafe_allow_html=True)
+
+'# Echo'
+
+'Allows to display a block of code and then execute it. This is what is used on this page in order to demonstrate the various streamlit components'
+
+with st.echo():
+    with st.echo():
+        st.write('hello 👋')
 
 # load components from script files
 load_components()

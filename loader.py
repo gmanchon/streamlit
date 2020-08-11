@@ -160,8 +160,8 @@ def populate_sidebar(nodes):
     hard_coded_toc = '''<h1>Foreword</h1>
         <a href="#Import">Import</a><br>
         <a href="#Magic commands">Magic commands</a><br>
-        <a href="#Echo">Echo</a><br>
         <a href="#Inline documentation">Inline documentation</a><br>
+        <a href="#Echo">Echo</a><br>
     '''
 
     toc = hard_coded_toc
@@ -192,7 +192,7 @@ def load_components():
     executes all script files in the components directory
     """
 
-    components_path = 'components'
+    components_path = 'elements'
     components_level = 1
 
     # retrieve the list of script files
