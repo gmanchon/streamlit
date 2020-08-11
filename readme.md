@@ -9,4 +9,5 @@ streamlit run demo.py
 
 ``` bash
 heroku config:set HEROKU_EMAIL_ADDRESS=your-email-address@email-provider.com
+heroku ps:scale web=1
 ```
