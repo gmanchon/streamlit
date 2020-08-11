@@ -10,6 +10,8 @@ from loader import load_components
 # this magic command syntax will only work in the main file, other files will require the usage of st.write or st.markdown
 '# Streamlit quick reference'
 
+'This app was [created using streamlit](https://www.imdb.com/title/tt1375666/)'
+
 'You should prefer the [official API reference](https://docs.streamlit.io/en/stable/api.html)'
 
 st.write(f'<a name="Import"></a>', unsafe_allow_html=True)
