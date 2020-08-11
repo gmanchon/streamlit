@@ -4,6 +4,9 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 
+def title():
+    return 'DataFrame'
+
 def run():
 
     st.write('## Default rendering')
