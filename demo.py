@@ -12,10 +12,14 @@ from loader import load_components
 
 'You should prefer the [official API reference](https://docs.streamlit.io/en/stable/api.html)'
 
+st.write(f'<a name="Import"></a>', unsafe_allow_html=True)
+
 '# Import'
 
 with st.echo():
     import streamlit as st
+
+st.write(f'<a name="Magic commands"></a>', unsafe_allow_html=True)
 
 '# Magic commands'
 
@@ -24,6 +28,8 @@ with st.echo():
 with st.echo():
     'some text or **markdown**'
 
+st.write(f'<a name="Echo"></a>', unsafe_allow_html=True)
+
 '# Echo'
 
 'Display a block of executed code'
@@ -31,6 +37,15 @@ with st.echo():
 with st.echo():
     with st.echo():
         st.write('hello 👋')
+
+st.write(f'<a name="Inline documentation"></a>', unsafe_allow_html=True)
+
+'# Inline documentation'
+
+'Any streamlit method called without parenthesis and arguments will display its documentation'
+
+with st.echo():
+    st.echo
 
 # load components from script files
 load_components()

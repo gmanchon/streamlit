@@ -155,7 +155,16 @@ def populate_sidebar(nodes):
     adds links to the content of the scripts in the sidebar
     """
 
-    toc = ''
+    # hard coded toc allows to keep some widgets demo in the main file
+    # useful in particular in order to demonstrate the magic commands
+    hard_coded_toc = '''<h1>Foreword</h1>
+        <a href="#Import">Import</a><br>
+        <a href="#Magic commands">Magic commands</a><br>
+        <a href="#Echo">Echo</a><br>
+        <a href="#Inline documentation">Inline documentation</a><br>
+    '''
+
+    toc = hard_coded_toc
 
     # create sidebar table of content
     for node in nodes:
