@@ -10,9 +10,11 @@ from loader import load_components
 # this magic command syntax will only work in the main file, other files will require the usage of st.write or st.markdown
 '# Streamlit quick reference'
 
-'This app was [created using streamlit](https://www.imdb.com/title/tt1375666/)'
+'This is just a quick demo. You should prefer the [official API reference](https://docs.streamlit.io/en/stable/api.html)'
 
-'You should prefer the [official API reference](https://docs.streamlit.io/en/stable/api.html)'
+'The sidebar (arrow on the top left of the page) allows you to navigate in the page'
+
+'This app was [created using streamlit](https://www.imdb.com/title/tt1375666/). The code of the page is visible [here](https://github.com/gmanchon/streamlit). If you are just getting started, an older yet simpler version of the code is available [here](https://github.com/gmanchon/streamlit/tree/main)'
 
 st.write(f'<a name="Import"></a>', unsafe_allow_html=True)
 
