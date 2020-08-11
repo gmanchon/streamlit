@@ -77,7 +77,6 @@ def recursive_iterate_directories(path, level):
 
         # ignoring typos
         if script not in container_scripts:
-            print(f'there is a typo in {path}/order.json 🤬')
             continue
 
         script_element = container_scripts[script]
