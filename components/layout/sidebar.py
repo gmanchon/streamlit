@@ -6,7 +6,6 @@ def run():
     with st.echo():
         st.sidebar.markdown(f"""
             # Header resizer
-            Selected option: {{option}}
             """)
 
         font_size = st.sidebar.slider('Changer header size', 16, 72, 36)

@@ -14,7 +14,7 @@ def run():
                 np.random.randn(20, 3),
                 columns=['a', 'b', 'c'])
 
-        df
+        st.write(df)
 
     st.slider('Show me uncached changes', 1, 10, 1)
 
@@ -27,7 +27,7 @@ def run():
 
         cached_df = get_data()
 
-        cached_df
+        st.write(cached_df)
 
     option = st.slider('Zoom', 1, 10, 1)
 

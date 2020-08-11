@@ -14,4 +14,6 @@ def run():
 
         option = st.slider('Select a modulus', 1, 10, 3)
 
-        df[df['first column'] % option == 0]
+        filtered_df = df[df['first column'] % option == 0]
+
+        st.write(filtered_df)

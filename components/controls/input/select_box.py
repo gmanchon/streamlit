@@ -17,4 +17,6 @@ def run():
 
         option = st.selectbox('Select a line to filter', df['first column'])
 
-        df[df['first column'] == option]
+        filtered_df = df[df['first column'] == option]
+
+        st.write(filtered_df)

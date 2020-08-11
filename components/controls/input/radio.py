@@ -5,4 +5,4 @@ def run():
 
     with st.echo():
         direction = st.radio('Select a direction', ('top', 'right', 'bottom', 'left'))
-        direction
+        st.write(direction)

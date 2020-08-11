@@ -14,7 +14,7 @@ def run():
 
         st.table(df.head())
 
-        df
+        st.write(df)
 
     st.write('## Using Pandas Styler')
 
