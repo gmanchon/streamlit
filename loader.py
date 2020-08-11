@@ -25,7 +25,7 @@ def recursive_iterate_directories(path, level):
             'level' : level,
         },
         'sections' : [],
-        'scripts' : {}
+        'scripts' : []
     }
 
     # loading order json file
@@ -37,8 +37,32 @@ def recursive_iterate_directories(path, level):
         with open(order_path) as json_file:
             order = json.load(json_file)
 
+    # listing entries in components directory
+    entries = listdir(path)
+
+    sorted_entries = []
+
+    # ordering entries according to order json file
+    for entry in order:
+
+        # handling script files
+        entry_path = join(path, entry)
+
+        if not isdir(entry_path):
+            entry += '.py'
+
+        # adding sorted entry to result
+        sorted_entries.append(entry)
+
+        # removing sorted entry from order json list
+        if entry in entries:
+            entries.remove(entry)
+
+    # adding unsorted entries back
+    sorted_entries += entries
+
     # iterating through the content of the directory
-    for entry in listdir(path):
+    for entry in sorted_entries:
 
         # ignore pycache directories
         if entry == '__pycache__':
@@ -61,39 +85,18 @@ def recursive_iterate_directories(path, level):
         # adding script files to the result
         if isfile(entry_path):
             script_name = entry[:-3]
-            containers['scripts'][script_name] = {
+            containers['scripts'] += [{
                 'type' : 'script',
                 'name' : script_name,
                 'path' : entry_path
-            }
-
-    # changing scripts order according to order json file
-    container_scripts = containers['scripts']
-
-    ordered_containers = []
-
-    # ordering scripts specified in the order json file
-    for script in order:
-
-        # ignoring typos
-        if script not in container_scripts:
-            continue
-
-        script_element = container_scripts[script]
-        del(container_scripts[script])
-        ordered_containers.append(script_element)
-
-    # adding unspecified scripts at the end in the same order
-    for key, value in container_scripts.items():
-
-        ordered_containers.append(value)
+            }]
 
     # buiding node list
     nodes = []
 
     nodes.append(containers['title'])
     nodes += containers['sections']
-    nodes += ordered_containers
+    nodes += containers['scripts']
 
     return nodes
 
