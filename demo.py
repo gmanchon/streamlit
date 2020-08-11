@@ -3,6 +3,7 @@ import streamlit as st
 
 from loader import load_components
 
+# this magic command syntax will only work in the main file, other files will require the usage of st.write or st.markdown
 '# Streamlit quick reference'
 
 'You should prefer the [official API reference](https://docs.streamlit.io/en/stable/api.html)'
