@@ -1,3 +1,7 @@
+"""
+this is the main file, the only file in which the magic commands will work
+the loader is used in order to load the scripts demonstrating each widget
+"""
 
 import streamlit as st
 
@@ -15,14 +19,14 @@ with st.echo():
 
 '# Magic commands'
 
-'All strings in the **main** script file will be rendered in the page as markdown. Other script files need to use `st.write` or `st.markdown` in order to render text'
+'All strings in the **main** script file will be rendered in the page as markdown. Other script files need to use `st.write` or `st.markdown` in order to display text or other objects'
 
 with st.echo():
     'some text or **markdown**'
 
 '# Echo'
 
-'Display blocks of executed code'
+'Display a block of executed code'
 
 with st.echo():
     with st.echo():

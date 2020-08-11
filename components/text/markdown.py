@@ -3,7 +3,7 @@ import streamlit as st
 
 def run():
 
-    st.write('Markdown allows to structure your app into sections')
+    st.write('Markdown allows to style and structure the text in your app')
 
     with st.echo():
         st.markdown("""

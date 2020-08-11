@@ -1,6 +1,7 @@
 """
 loads all scripts in the components directory
 retrieves their title and executes their run function
+the directories and scripts are loaded in the order specified by order.json
 """
 
 import streamlit as st
