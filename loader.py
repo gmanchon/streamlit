@@ -110,7 +110,7 @@ def file_name_to_title(file_path):
 def get_node_anchor(node):
 
     if 'title' in node:
-        return node['title'].capitalize()
+        return node['title']
 
     return file_root_to_title(node['name'])
 
@@ -131,7 +131,7 @@ def load_script(script):
 
     # retrieve script title
     if hasattr(module, 'title'):
-        script_title = module.title().capitalize()
+        script_title = module.title()
     else:
         # convert file name to title name
         script_title = file_name_to_title(script_path)
