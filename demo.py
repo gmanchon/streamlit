@@ -21,7 +21,7 @@ page_load_time_placeholder = st.sidebar.empty()
 
 'This is just a quick demo. You should prefer the [official API reference](https://docs.streamlit.io/en/stable/api.html)'
 
-'The sidebar (arrow on the top left of the page) allows you to navigate in the page'
+'The sidebar (arrow on the top left of the page) allows you to navigate in the page and displays the page load time. You may check how the prod location affects the load time: [EU version](https://wagon-data-streamlit-eu.herokuapp.com/) vs [US version](https://wagon-data-streamlit.herokuapp.com/)'
 
 'This app was [created using streamlit](https://www.imdb.com/title/tt1375666/). The code of the page is visible [here](https://github.com/gmanchon/streamlit). If you are just getting started, an older yet simpler version of the code is available [here](https://github.com/gmanchon/streamlit/tree/main)'
 
