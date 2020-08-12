@@ -4,13 +4,18 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 
-def run():
-
-    with st.echo():
-        df = pd.DataFrame({
+@st.cache
+def get_data():
+    print('get_data slider called')
+    return pd.DataFrame({
           'first column': list(range(1, 11)),
           'second column': np.arange(10, 101, 10)
         })
+
+def run():
+
+    with st.echo():
+        df = get_data()
 
         option = st.slider('Select a modulus', 1, 10, 3)
 
