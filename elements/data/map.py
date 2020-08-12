@@ -15,7 +15,7 @@ def get_data():
 def run():
 
     with st.echo():
-        if st.checkbox('Show map'):
+        if st.checkbox('Show map', True):
             df = get_data()
 
             st.map(df)

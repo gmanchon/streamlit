@@ -16,10 +16,11 @@ def get_data():
 def run():
 
     with st.echo():
-        import plotly.graph_objects as go
+        if st.checkbox('Show plotly', True):
+            import plotly.graph_objects as go
 
-        x, y, z = get_data()
+            x, y, z = get_data()
 
-        fig = go.Figure(data=[go.Surface(z=z, x=x, y=y)])
-        fig.update_layout(title='IRR', autosize=False, width=800, height=800, margin=dict(l=40, r=40, b=40, t=40))
-        st.plotly_chart(fig)
+            fig = go.Figure(data=[go.Surface(z=z, x=x, y=y)])
+            fig.update_layout(title='IRR', autosize=False, width=800, height=800, margin=dict(l=40, r=40, b=40, t=40))
+            st.plotly_chart(fig)
