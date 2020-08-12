@@ -5,8 +5,8 @@ import numpy as np
 import pandas as pd
 
 @st.cache
-def get_data():
-    print('get_data slider called')
+def get_slider_data():
+    print('get_slider_data called')
     return pd.DataFrame({
           'first column': list(range(1, 11)),
           'second column': np.arange(10, 101, 10)
@@ -15,7 +15,7 @@ def get_data():
 def run():
 
     with st.echo():
-        df = get_data()
+        df = get_slider_data()
 
         option = st.slider('Select a modulus', 1, 10, 3)
 

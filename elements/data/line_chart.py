@@ -5,8 +5,8 @@ import pandas as pd
 import numpy as np
 
 @st.cache
-def get_data():
-    print('get_data line chart called')
+def get_line_chart_data():
+    print('get_line_chart_data called')
     return pd.DataFrame(
             np.random.randn(20, 3),
             columns=['a', 'b', 'c']
@@ -15,6 +15,6 @@ def get_data():
 def run():
 
     with st.echo():
-        df = get_data()
+        df = get_line_chart_data()
 
         st.line_chart(df)

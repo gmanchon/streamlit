@@ -8,8 +8,8 @@ def title():
     return 'DataFrame'
 
 @st.cache
-def get_data():
-    print('get_data dataframe called')
+def get_dataframe_data():
+    print('get_dataframe_data called')
     return pd.DataFrame(
             np.random.randn(10, 5),
             columns=('col %d' % i for i in range(5))
@@ -20,7 +20,7 @@ def run():
     st.write('## Default rendering')
 
     with st.echo():
-        df = get_data()
+        df = get_dataframe_data()
 
         st.write(df.head())
 

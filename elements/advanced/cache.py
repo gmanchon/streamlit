@@ -20,12 +20,12 @@ def run():
 
     with st.echo():
         @st.cache
-        def get_data():
+        def get_cached_data():
             return pd.DataFrame(
                 np.random.randn(20, 3),
                 columns=['a', 'b', 'c'])
 
-        cached_df = get_data()
+        cached_df = get_cached_data()
 
         st.write(cached_df)
 
