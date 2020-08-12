@@ -29,10 +29,6 @@ def run():
 
         Because the dataframe is not cached, its random data changes \
         on every user interaction, for example with this totally unrelated slider
-
-        Try changing the radio buttons at the top of the sidebar... \
-        They also change the content of dataframe because the code gets \
-        reinterpreted each time the user interacts with a control element
         ''')
 
     with st.echo():
@@ -45,6 +41,10 @@ def run():
     st.slider('Hi, I am a totally unrelated slider', 1, 10, 1)
 
     st.write('''
+        Try changing the radio buttons at the top of the sidebar... \
+        They also change the content of dataframe because the code gets \
+        reinterpreted each time the user interacts with a control element
+
         On the contrary, this second dataframe is returned by a function \
         decorated by `@st.cache`. Its content does not change \
         as the user slides. If the dataframe has a few million lines, \
