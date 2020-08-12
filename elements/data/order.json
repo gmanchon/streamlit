@@ -1,5 +1,6 @@
 [
   "dataframe",
+  "cache",
   "line_chart",
   "area_chart",
   "bar_chart",
