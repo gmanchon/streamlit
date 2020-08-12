@@ -16,10 +16,19 @@ def run():
             import requests
             from bs4 import BeautifulSoup
 
-            response = requests.get('https://www.iubenda.com/privacy-policy/7967062/legal')
+            @st.cache
+            def get_scraping_data():
+                print('get_scraping_data called')
 
-            soup = BeautifulSoup(response.content, 'html.parser')
-            content = soup.select('#wbars_all')
+                url = 'https://www.iubenda.com/privacy-policy/7967062/legal'
+                response = requests.get(url)
 
-            st.write(f'<div id="iubenda_policy" class="iubenda_fixed_policy">{str(content)}</div>', unsafe_allow_html=True)
+                soup = BeautifulSoup(response.content, 'html.parser')
+                content = str(soup.select('#wbars_all'))
+
+                return content
+
+            content = get_scraping_data()
+
+            st.write(f'<div id="iubenda_policy" class="iubenda_fixed_policy">{content}</div>', unsafe_allow_html=True)
 
