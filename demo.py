@@ -13,7 +13,7 @@ import time
 
 page_load_start_time = time.time()
 
-st.sidebar.radio('Check load time', ('one', 'two'))
+st.sidebar.radio('Check load time', ('switch from one button to the other', 'in order to reinterpret the code'))
 
 page_load_time_placeholder = st.sidebar.empty()
 
