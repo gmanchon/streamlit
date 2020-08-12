@@ -10,10 +10,10 @@ def run():
 
     with st.echo():
         st.markdown("""
-        # title
+            # title
 
-        ## many levels of subtitles
+            ## many levels of subtitles
 
-        **bold** or *italic* text with [links](http://github.com/streamlit) and:
-        - bullet points
+            **bold** or *italic* text with [links](http://github.com/streamlit) and:
+            - bullet points
         """)
