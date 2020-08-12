@@ -6,7 +6,7 @@ def title():
 
 def run():
 
-    st.write('If you really want to go crazy with the content, why not inject a custom HTML element?')
+    st.markdown('If you really want to go crazy with the content, why not inject a [custom HTML element](https://github.com/gmanchon/streamlit/blob/master/elements/advanced/html.py)?')
 
     if st.checkbox('Show teachers'):
         image_size = st.slider('Zoom', 50, 250, 119)
