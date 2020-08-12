@@ -22,3 +22,6 @@ def run():
         </style>
         """
         st.write(FONT_SIZE_CSS, unsafe_allow_html=True)
+
+    direction = st.sidebar.radio('Check load time', ('one', 'two'))
+    st.sidebar.markdown(direction)
