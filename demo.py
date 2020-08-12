@@ -2,7 +2,7 @@
 this is the main file, the only file in which the magic commands will work
 the loader is used in order to load the scripts demonstrating each widget
 """
-#
+
 import streamlit as st
 
 from loader import load_components
@@ -66,4 +66,4 @@ load_components()
 # show page load duration in sidebar
 page_load_duration = time.time() - page_load_start_time
 
-page_load_time_placeholder.markdown(f'{round(page_load_duration, 2)} seconds')
+page_load_time_placeholder.markdown(f'{round(page_load_duration, 3)} seconds')
