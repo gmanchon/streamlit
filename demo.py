@@ -10,7 +10,6 @@ from loader import load_components
 import time
 
 # process page load duration
-
 page_load_start_time = time.time()
 
 st.sidebar.radio('Check load time', ('switch from one button to the other', 'in order to reinterpret the code'))
@@ -68,4 +67,3 @@ load_components()
 page_load_duration = time.time() - page_load_start_time
 
 page_load_time_placeholder.markdown(f'{round(page_load_duration, 2)} seconds')
-#
