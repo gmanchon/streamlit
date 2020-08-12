@@ -2,10 +2,20 @@
 this is the main file, the only file in which the magic commands will work
 the loader is used in order to load the scripts demonstrating each widget
 """
-
+#
 import streamlit as st
 
 from loader import load_components
+
+import time
+
+# process page load duration
+
+page_load_start_time = time.time()
+
+st.sidebar.radio('Check load time', ('one', 'two'))
+
+page_load_time_placeholder = st.sidebar.empty()
 
 # this magic command syntax will only work in the main file, other files will require the usage of st.write or st.markdown
 '# Streamlit quick reference'
@@ -53,3 +63,9 @@ with st.echo():
 
 # load components from script files
 load_components()
+
+# show page load duration in sidebar
+page_load_duration = time.time() - page_load_start_time
+
+page_load_time_placeholder.markdown(f'{round(page_load_duration, 2)} seconds')
+#
