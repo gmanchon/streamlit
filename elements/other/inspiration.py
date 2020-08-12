@@ -4,5 +4,5 @@ import streamlit as st
 def run():
 
     st.markdown("""
-        * [Nice multipage navigation in sidebar using radio buttons](https://awesome-streamlit.org/)
+        * [Awesome site and nice multipage navigation in sidebar using radio buttons](https://awesome-streamlit.org/)
     """)
