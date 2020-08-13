@@ -6,7 +6,7 @@ def title():
 
 def run():
 
-    st.write('Please refer to the [streamlit API reference](https://docs.streamlit.io/en/stable/api.html#display-media) for audio or video code samples')
+    st.write('Please refer to the [streamlit API reference](https://docs.streamlit.io/en/stable/api.html#display-media) for more audio or video code samples')
 
     with st.echo():
         from PIL import Image
