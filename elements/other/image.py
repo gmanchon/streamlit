@@ -10,5 +10,5 @@ def run():
 
     with st.echo():
         from PIL import Image
-        image = Image.open('wagon.png')
+        image = Image.open('images/wagon.png')
         st.image(image, caption='Le Wagon', use_column_width=False)

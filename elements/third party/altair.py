@@ -20,7 +20,7 @@ def run():
                     columns=['a', 'b', 'c']
                 )
 
-        if st.checkbox('Show altair', True):
+        if st.checkbox('Show altair', False):
             import altair as alt
 
             df = get_altair_data()
@@ -29,3 +29,7 @@ def run():
                 x='a', y='b', size='c', color='c', tooltip=['a', 'b', 'c'])
 
             st.write(c)
+        else:
+            from PIL import Image
+            image = Image.open('images/altair.png')
+            st.image(image, caption='altair', use_column_width=False)

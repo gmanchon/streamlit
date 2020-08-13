@@ -15,7 +15,11 @@ def run():
                     columns=['lat', 'lon']
                 )
 
-        if st.checkbox('Show map', True):
+        if st.checkbox('Show map', False):
             df = get_map_data()
 
             st.map(df)
+        else:
+            from PIL import Image
+            image = Image.open('images/map.png')
+            st.image(image, caption='map', use_column_width=False)

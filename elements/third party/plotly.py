@@ -16,7 +16,7 @@ def run():
             x, y = np.linspace(0, 1, sh_0), np.linspace(0, 1, sh_1)
             return x, y, z
 
-        if st.checkbox('Show plotly', True):
+        if st.checkbox('Show plotly', False):
             import plotly.graph_objects as go
 
             x, y, z = get_plotly_data()
@@ -24,3 +24,7 @@ def run():
             fig = go.Figure(data=[go.Surface(z=z, x=x, y=y)])
             fig.update_layout(title='IRR', autosize=False, width=800, height=800, margin=dict(l=40, r=40, b=40, t=40))
             st.plotly_chart(fig)
+        else:
+            from PIL import Image
+            image = Image.open('images/plotly.png')
+            st.image(image, caption='plotly', use_column_width=False)
