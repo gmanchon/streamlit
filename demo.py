@@ -36,10 +36,14 @@ st.write(f'<a name="Magic commands"></a>', unsafe_allow_html=True)
 
 '# Magic commands'
 
-'All strings in the **main** script file will be rendered in the page as markdown. Other script files need to use `st.markdown` or `st.write` in order to display text or other objects'
+'All strings or objects in the **main** script file will be rendered in the page as markdown. Other script files need to use `st.markdown` or `st.write` in order to display text or other objects'
 
 with st.echo():
     'some text or **markdown**'
+
+    {
+        'hello' : True
+    }
 
 st.write(f'<a name="Inline documentation"></a>', unsafe_allow_html=True)
 
