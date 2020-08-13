@@ -36,7 +36,7 @@ st.write(f'<a name="Magic commands"></a>', unsafe_allow_html=True)
 
 '# Magic commands'
 
-'All strings or objects in the **main** script file will be rendered in the page as markdown. Other script files need to use `st.markdown` or `st.write` in order to display text or other objects'
+'All strings or objects in the **main** script file will be automatically rendered in the page by streamlit as if `write` or `mardown` were used. This only works in the main file, other script files need to use `st.write` or `st.markdown` in order to display objects or text'
 
 with st.echo():
     'some text or **markdown**'
