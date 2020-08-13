@@ -48,7 +48,8 @@ def run():
         On the contrary, this second dataframe is returned by a function \
         decorated by `@st.cache`. Its content does not change \
         as the user slides. If the dataframe has a few million lines, \
-        the difference will have a real impact on the page responsiveness
+        the difference will have a real impact on the responsiveness \
+        of the page
         ''')
 
     with st.echo():
