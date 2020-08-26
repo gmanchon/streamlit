@@ -9,6 +9,13 @@ from loader import load_components
 
 import time
 
+# tmp until the feature is released
+st.beta_set_page_config(
+    page_title="Quick reference",
+    page_icon="🐍",
+    layout="centered", # wide
+    initial_sidebar_state="auto") # collapsed
+
 # process page load duration
 page_load_start_time = time.time()
 
