@@ -3,7 +3,7 @@ from setuptools import setup
 
 REQUIRED_PACKAGES = [
     # streamlit
-    'streamlit==0.64.0',
+    'streamlit==0.65.2',
     # data manipulation
     'numpy==1.18.4',
     'pandas==0.24.2',
