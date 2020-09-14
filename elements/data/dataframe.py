@@ -24,6 +24,13 @@ def run():
 
         st.write(df.head())
 
+    st.write('## Hiding index')
+
+    with st.echo():
+        hdf = df.assign(hack='').set_index('hack')
+
+        st.write(hdf.head())
+
     st.write('## Using a table')
 
     with st.echo():
