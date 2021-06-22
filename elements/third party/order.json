@@ -1,5 +1,6 @@
 [
   "matplotlib",
   "plotly",
-  "altair"
+  "altair",
+  "folium"
 ]
