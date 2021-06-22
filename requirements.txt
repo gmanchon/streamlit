@@ -7,3 +7,5 @@ altair
 scipy
 requests
 bs4
+folium
+streamlit_folium
