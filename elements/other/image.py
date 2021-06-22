@@ -36,7 +36,7 @@ def run():
             encoded = load_image(path)
             style = f'''
             <style>
-            body {{
+            .stApp {{
                 background-image: url("data:image/png;base64,{encoded}");
                 background-size: cover;
             }}
