@@ -13,7 +13,7 @@ def run():
         h1 {
             color: red;
         }
-        body {
+        .stApp {
             background-image: url(https://avatars1.githubusercontent.com/u/9978111?v=4);
             background-size: cover;
         }
