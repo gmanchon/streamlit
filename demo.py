@@ -26,7 +26,7 @@ page_load_time_placeholder = st.sidebar.empty()
 # this magic command syntax will only work in the main file, other files will require the usage of st.write or st.markdown
 '# Streamlit quick reference'
 
-'This is just a quick demo. You should prefer the [official API reference](https://docs.streamlit.io/en/stable/api.html)'
+'This is just a quick demo. You should prefer the [official API reference](https://docs.streamlit.io/en/stable/api.html). Have a look at the [streamlit cheat sheet](https://share.streamlit.io/daniellewisdl/streamlit-cheat-sheet/app.py)'
 
 'The sidebar (arrow on the top left of the page) allows you to navigate in the page and displays the page load time. You may check how the prod location affects the load time: [EU version](https://wagon-data-streamlit-eu.herokuapp.com/) vs [US version](https://wagon-data-streamlit.herokuapp.com/)'
 
