@@ -4,6 +4,8 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 
+import seaborn as sns
+
 def title():
     return 'DataFrame'
 
@@ -39,4 +41,6 @@ def run():
     st.write('## Using pandas styler')
 
     with st.echo():
-        st.dataframe(df.head().style.highlight_max(axis=0))
+
+        cm = sns.color_palette("coolwarm_r", as_cmap=True)
+        st.dataframe(df.head().style.background_gradient(cmap=cm))
