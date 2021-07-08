@@ -43,4 +43,5 @@ def run():
     with st.echo():
 
         cm = sns.color_palette("coolwarm_r", as_cmap=True)
-        st.dataframe(df.head().style.background_gradient(cmap=cm))
+        df = df.head().style.background_gradient(cmap=cm)
+        df
