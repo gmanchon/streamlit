@@ -6,6 +6,7 @@ the directories and scripts are loaded in the order specified by order.json
 
 import streamlit as st
 
+import os
 from os import listdir
 from os.path import isfile, isdir, join, split
 
@@ -122,7 +123,7 @@ def load_script(script):
     """
 
     script_path = script['path']
-    module_name = script_path.replace('/', '.')
+    module_name = script_path.replace(os.sep, '.')
 
     # load script
     # from https://stackoverflow.com/questions/67631/how-to-import-a-module-given-the-full-path
