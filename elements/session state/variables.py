@@ -1,22 +1,29 @@
 import streamlit as st
 
 def run():
-    st.write("Streamlit runs from top to bottom on every iteraction, and we lose track of variables, unless we use `session_state`")
-    st.write("Here we create a persistent variable that you can increment/decrement, and which value will persist even after a rerun!")
 
+    st.write("The session state allows to persist variables between code reruns and for the duration of a user session. Without the session state, it would not be possible to easily store variables between two interactions with the components of the page")
+
+    st.write("The session state starts empty for each user session")
 
     with st.echo():
 
-        # We need to check if `persistent_variable` has already been initialized in `st.session_state`
-        if 'persistent_variable' not in st.session_state:
-            st.session_state.persistent_variable = 0
+        unpersisted_variable = 0  # here is how a normal variable behaves for comparision
+        if "persisted_variable" not in st.session_state:
+            st.session_state.persisted_variable = 0  # initialize the session state variable
 
-        increment = st.button('Increment')
-        if increment:
-            st.session_state.persistent_variable += 1
+        if st.button("Increment"):
+            unpersisted_variable += 1
+            st.session_state.persisted_variable += 1
 
-        decrement = st.button('Decrement')
-        if decrement:
-            st.session_state.persistent_variable -= 1
+        if st.button("Decrement"):
+            unpersisted_variable -= 1
+            st.session_state.persisted_variable -= 1
 
-        st.write('Persistent variable = ', st.session_state.persistent_variable)
+        st.write("Session state")
+
+        st.write(st.session_state)
+
+        st.write(f"Unpersistent variable: {unpersisted_variable} 👈 the value does not take into account previous page reruns")
+        st.write(f"Persisted variable: {st.session_state.persisted_variable} 👈 the data is persisted between reruns")
+        st.write(f'Persisted variable: {st.session_state["persisted_variable"]}')
