@@ -2,8 +2,8 @@
 import streamlit as st
 
 def title():
-    return 'Forms ✒️'
+    return 'Session forms & callbacks'
 
 def run():
 
-    st.write('')
+    st.write("")
