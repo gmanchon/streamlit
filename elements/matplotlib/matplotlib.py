@@ -4,18 +4,14 @@ import streamlit as st
 def run():
 
     with st.echo():
-        if st.checkbox('Show matplotlib', False):
-            import matplotlib.pyplot as plt
 
-            from scipy import misc
+        import matplotlib.pyplot as plt
 
-            fig, ax = plt.subplots()
+        from scipy import misc
 
-            face = misc.face(gray=True)
-            ax.imshow(face, cmap='gray')
+        fig, ax = plt.subplots()
 
-            st.pyplot(fig)
-        else:
-            from PIL import Image
-            image = Image.open('images/matplotlib.png')
-            st.image(image, caption='matplotlib', use_column_width=False)
+        face = misc.face(gray=True)
+        ax.imshow(face, cmap='gray')
+
+        st.pyplot(fig)
