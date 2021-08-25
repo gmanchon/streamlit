@@ -27,4 +27,5 @@ def run():
 
         cm = sns.color_palette("coolwarm_r", as_cmap=True)
         df = df.head().style.background_gradient(cmap=cm)
-        df
+
+        st.write(df)
