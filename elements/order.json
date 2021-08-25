@@ -1,11 +1,12 @@
 [
-  "text",
-  "code",
-  "controls",
-  "data",
-  "third party",
-  "advanced",
-  "layout",
-  "session state",
-  "other"
+    "text & code",
+    "user controls",
+    "data",
+    "charts",
+    "maps",
+    "third party",
+    "HTML & CSS",
+    "layout",
+    "session state",
+    "other"
 ]

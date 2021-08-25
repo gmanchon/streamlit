@@ -204,7 +204,9 @@ def populate_sidebar(nodes, magic_function):
             menu_items[current_menu_item]["toc_items"].append(toc_item)
 
     # create menu
-    menu_item = st.sidebar.radio("Menu", menu_items.keys())
+    st.sidebar.write("# Navigation")
+
+    menu_item = st.sidebar.radio("Go to", menu_items.keys())
 
     # show content
     selected_menu_item = menu_items[menu_item]
