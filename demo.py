@@ -13,8 +13,8 @@ import time
 st.set_page_config(
     page_title="Quick reference",
     page_icon="🐍",
-    layout="centered", # wide
-    initial_sidebar_state="auto") # collapsed
+    layout="centered",  # wide
+    initial_sidebar_state="auto")  # collapsed
 
 # process page load duration
 page_load_start_time = time.time()
@@ -38,13 +38,13 @@ def magic_function():
 
     'This app was [created using streamlit](https://www.imdb.com/title/tt1375666/). The code of the page is visible [here](https://github.com/gmanchon/streamlit). If you are just getting started, an older yet simpler version of the code is available [here](https://github.com/gmanchon/streamlit/tree/main)'
 
-    st.write(f'<a name="Import"></a>', unsafe_allow_html=True)
+    st.write('<a name="Import"></a>', unsafe_allow_html=True)
 
     '# Import'
 
     st.code("import streamlit as st")
 
-    st.write(f'<a name="Magic commands"></a>', unsafe_allow_html=True)
+    st.write('<a name="Magic commands"></a>', unsafe_allow_html=True)
 
     '# Magic commands'
 
@@ -54,10 +54,10 @@ def magic_function():
         'some text or **markdown**'
 
         {
-            'hello' : True
+            'hello': True
         }
 
-    st.write(f'<a name="Inline documentation"></a>', unsafe_allow_html=True)
+    st.write('<a name="Inline documentation"></a>', unsafe_allow_html=True)
 
     '# Inline documentation'
 
@@ -66,7 +66,7 @@ def magic_function():
     with st.echo():
         st.echo
 
-    st.write(f'<a name="Echo"></a>', unsafe_allow_html=True)
+    st.write('<a name="Echo"></a>', unsafe_allow_html=True)
 
     '# Echo'
 
