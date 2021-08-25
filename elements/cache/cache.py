@@ -33,16 +33,6 @@ def run():
         on every user interaction, for example with this totally unrelated slider
         ''')
 
-    with st.echo():
-
-        df = pd.DataFrame(
-                np.random.randn(3, 3),
-                columns=['a', 'b', 'c'])
-
-        st.write(df)
-
-    st.slider('Hi, I am a totally unrelated slider', 1, 10, 1)
-
     st.write('''
         Try changing the radio buttons at the top of the sidebar... \
         They also change the content of dataframe because the code gets \
@@ -56,6 +46,14 @@ def run():
         ''')
 
     with st.echo():
+
+        df = pd.DataFrame(
+                np.random.randn(3, 3),
+                columns=['a', 'b', 'c'])
+
+        st.write(df)
+
+        st.slider('Hi, I am a totally unrelated slider', 1, 10, 1)
 
         @st.cache
         def get_cached_data():
