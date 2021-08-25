@@ -14,6 +14,7 @@ import importlib.util
 
 import json
 
+
 def recursive_iterate_directories(path, level):
     """
     recursively iterates through directories
@@ -102,12 +103,15 @@ def recursive_iterate_directories(path, level):
 
     return nodes
 
+
 def file_root_to_title(file_root):
     return file_root.replace('_', ' ').capitalize()
+
 
 def file_name_to_title(file_path):
     file_root = split(file_path)[1][:-3] # remove path then remove .py
     return file_root_to_title(file_root)
+
 
 def get_node_anchor(node):
 
@@ -115,6 +119,7 @@ def get_node_anchor(node):
         return node['title']
 
     return file_root_to_title(node['name'])
+
 
 def load_script(script, run=True):
     """
@@ -153,6 +158,7 @@ def load_script(script, run=True):
 
     # fill script info
     script['title'] = script_title
+
 
 def populate_sidebar(nodes, magic_function):
     """
@@ -249,6 +255,7 @@ def populate_sidebar(nodes, magic_function):
                 continue
 
             load_script(node, run=True)
+
 
 def load_components(magic_function):
     """
