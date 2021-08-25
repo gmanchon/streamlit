@@ -30,58 +30,55 @@ def magic_function():
     other files require the usage of st.write or st.markdown
     """
 
-    pass
+    st.markdown('# Streamlit quick reference')
 
+    'This is just a quick demo. You should prefer the [official API reference](https://docs.streamlit.io/en/stable/api.html). Have a look at the [streamlit cheat sheet](https://share.streamlit.io/daniellewisdl/streamlit-cheat-sheet/app.py)'
 
-st.markdown('# Streamlit quick reference')
+    'The sidebar (arrow on the top left of the page) allows you to navigate in the page and displays the page load time. You may check how the prod location affects the load time: [EU version](https://wagon-data-streamlit-eu.herokuapp.com/) vs [US version](https://wagon-data-streamlit.herokuapp.com/)'
 
-'This is just a quick demo. You should prefer the [official API reference](https://docs.streamlit.io/en/stable/api.html). Have a look at the [streamlit cheat sheet](https://share.streamlit.io/daniellewisdl/streamlit-cheat-sheet/app.py)'
+    'This app was [created using streamlit](https://www.imdb.com/title/tt1375666/). The code of the page is visible [here](https://github.com/gmanchon/streamlit). If you are just getting started, an older yet simpler version of the code is available [here](https://github.com/gmanchon/streamlit/tree/main)'
 
-'The sidebar (arrow on the top left of the page) allows you to navigate in the page and displays the page load time. You may check how the prod location affects the load time: [EU version](https://wagon-data-streamlit-eu.herokuapp.com/) vs [US version](https://wagon-data-streamlit.herokuapp.com/)'
+    st.write(f'<a name="Import"></a>', unsafe_allow_html=True)
 
-'This app was [created using streamlit](https://www.imdb.com/title/tt1375666/). The code of the page is visible [here](https://github.com/gmanchon/streamlit). If you are just getting started, an older yet simpler version of the code is available [here](https://github.com/gmanchon/streamlit/tree/main)'
+    '# Import'
 
-st.write(f'<a name="Import"></a>', unsafe_allow_html=True)
+    st.code("import streamlit as st")
 
-'# Import'
+    st.write(f'<a name="Magic commands"></a>', unsafe_allow_html=True)
 
-st.code("import streamlit as st")
+    '# Magic commands'
 
-st.write(f'<a name="Magic commands"></a>', unsafe_allow_html=True)
+    'All strings or objects in the **main** script file will automatically be rendered in the page by streamlit as if `write` or `mardown` were used. This only works in the main file, other script files need to use `st.write` or `st.markdown` in order to display objects or text'
 
-'# Magic commands'
-
-'All strings or objects in the **main** script file will automatically be rendered in the page by streamlit as if `write` or `mardown` were used. This only works in the main file, other script files need to use `st.write` or `st.markdown` in order to display objects or text'
-
-with st.echo():
-    'some text or **markdown**'
-
-    {
-        'hello' : True
-    }
-
-st.write(f'<a name="Inline documentation"></a>', unsafe_allow_html=True)
-
-'# Inline documentation'
-
-'Any streamlit method called without parenthesis and arguments will display its documentation'
-
-with st.echo():
-    st.echo
-
-st.write(f'<a name="Echo"></a>', unsafe_allow_html=True)
-
-'# Echo'
-
-'Allows to display a block of code and then execute it. This is what is used on this page in order to demonstrate the usage of the various streamlit elements'
-
-with st.echo():
     with st.echo():
-        st.write('hello 👋')
+        'some text or **markdown**'
+
+        {
+            'hello' : True
+        }
+
+    st.write(f'<a name="Inline documentation"></a>', unsafe_allow_html=True)
+
+    '# Inline documentation'
+
+    'Any streamlit method called without parenthesis and arguments will display its documentation'
+
+    with st.echo():
+        st.echo
+
+    st.write(f'<a name="Echo"></a>', unsafe_allow_html=True)
+
+    '# Echo'
+
+    'Allows to display a block of code and then execute it. This is what is used on this page in order to demonstrate the usage of the various streamlit elements'
+
+    with st.echo():
+        with st.echo():
+            st.write('hello 👋')
 
 
 # load components from script files
-load_components()
+load_components(magic_function)
 
 # about
 st.sidebar.write("# About")
