@@ -32,6 +32,12 @@ def magic_function():
 
     st.markdown('# Streamlit quick reference')
 
+    st.info("""
+    References:
+    - [streamlit official API reference](https://docs.streamlit.io/en/stable/api.html)
+    - [streamlit cheat sheet](https://share.streamlit.io/daniellewisdl/streamlit-cheat-sheet/app.py)
+    """)
+
     st.write('<a name="Import"></a>', unsafe_allow_html=True)
 
     '# Import'
@@ -81,13 +87,6 @@ st.sidebar.info("""
 This app was created using streamlit. The code of the page is visible [here](https://github.com/gmanchon/streamlit). If you are just getting started, an older yet simpler version of the code is available [here](https://github.com/gmanchon/streamlit/tree/main)
 
 Hosting: [EU](https://wagon-data-streamlit-eu.herokuapp.com/), [US](https://wagon-data-streamlit.herokuapp.com/)
-""")
-
-st.sidebar.write("# References")
-
-st.sidebar.info("""
-- [streamlit official API reference](https://docs.streamlit.io/en/stable/api.html)
-- [streamlit cheat sheet](https://share.streamlit.io/daniellewisdl/streamlit-cheat-sheet/app.py)
 """)
 
 # show page load duration in sidebar
