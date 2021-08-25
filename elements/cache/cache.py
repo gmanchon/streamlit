@@ -12,55 +12,36 @@ def title():
 def run():
 
     st.write('''
-        Streamlit is going to reinterpret the whole code generating the page \
-        from scratch each time the user interacts with a control element \
-        (slider, input, etc). This will cause the page to feel unresponsive \
-        as its content grows
-
-        For example, we do not want to load our whole dataset everytime
-        the user switches the position of a slider. How to deal with that?
+        Streamlit reruns the whole code of the page each time the user \
+        interacts with a control. If the code of the page loads a dataset, \
+        the dataset will be reloaded everytime the user uses a control. \
+        How to deal with that?
 
         The `@st.cache` decorator allows the functions on which it is placed \
-        to be executed only once
+        to be executed only once and its result cached
+
+        In the example below, both dataframes are created with random values. \
+        Interacting with the slider shows that the top dataframe is \
+        regenerated on every interaction, while the bottom dataframe is not
         ''')
 
-    st.write('''
-        Let's take an example. The dataframe below gets constructed \
-        on every user interaction of the user with any control element \
-        in the page. The location of the element in the page does not matter
+    st.slider('Hi, I am a totally unrelated slider', 1, 10, 1)
 
-        Because the dataframe is not cached, its random data changes \
-        on every user interaction, for example with the totally unrelated slider below
-        ''')
-
-    st.write('''
-        Try changing the radio buttons at the top of the sidebar... \
-        They also change the content of dataframe because the code gets \
-        reinterpreted each time the user interacts with a control element
-
-        On the contrary, this second dataframe is returned by a function \
-        decorated by `@st.cache`. Its content does not change \
-        as the user slides. If the dataframe has a few million lines, \
-        the difference will have a real impact on the responsiveness \
-        of the page
-        ''')
+    columns = st.columns(2)
 
     with st.echo():
 
-        df = pd.DataFrame(
-                np.random.randn(3, 3),
-                columns=['a', 'b', 'c'])
-
-        st.write(df)
-
-        st.slider('Hi, I am a totally unrelated slider', 1, 10, 1)
+        def get_data():
+            return pd.DataFrame(
+                    np.random.randn(3, 3),
+                    columns=['a', 'b', 'c'])
 
         @st.cache
         def get_cached_data():
-            return pd.DataFrame(
-                np.random.randn(3, 3),
-                columns=['a', 'b', 'c'])
+            return get_data()
 
-        cached_df = get_cached_data()
+        columns[0].write("Uncached dataframe")
+        columns[0].write(get_data())
 
-        st.write(cached_df)
+        columns[1].write("Cached dataframe")
+        columns[1].write(get_cached_data())
