@@ -25,12 +25,12 @@ def run():
         ''')
 
     st.write('''
-        Let's take an example. The following dataframe gets constructed \
+        Let's take an example. The dataframe below gets constructed \
         on every user interaction of the user with any control element \
         in the page. The location of the element in the page does not matter
 
         Because the dataframe is not cached, its random data changes \
-        on every user interaction, for example with this totally unrelated slider
+        on every user interaction, for example with the totally unrelated slider below
         ''')
 
     st.write('''
