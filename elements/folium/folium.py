@@ -1,9 +1,6 @@
 
 import streamlit as st
 
-def title():
-    return 'Folium'
-
 def run():
 
     st.write('Here is an example of a map with geojson data. In order to use it, you need to identify a geojson data source ([here is one for France](https://github.com/gregoiredavid/france-geojson)). In order to use this code, first download the [departements.json](https://raw.githubusercontent.com/gmanchon/streamlit/master/data/departements.json) and [lewagon_cities.csv](https://raw.githubusercontent.com/gmanchon/streamlit/master/data/lewagon_cities.csv) files and store them in a `data` directory')
