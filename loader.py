@@ -161,7 +161,7 @@ def populate_sidebar(nodes, magic_function):
 
     # create menu
     menu_items = dict(
-        Foreword=dict(
+        Streamlit=dict(
             function=magic_function))
 
     current_menu_item = ""
@@ -220,7 +220,7 @@ def populate_sidebar(nodes, magic_function):
 
         # hard coded toc allows to keep some widgets demo in the main file
         # useful in particular in order to demonstrate the magic commands
-        hard_coded_toc = '''<h1>Foreword</h1>
+        hard_coded_toc = '''<h1>Streamlit</h1>
             <a href="#Import">Import</a><br>
             <a href="#Magic commands">Magic commands</a><br>
             <a href="#Inline documentation">Inline documentation</a><br>
