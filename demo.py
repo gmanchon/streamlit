@@ -24,6 +24,7 @@ st.sidebar.radio('Check load time', ('switch from one button to the other', 'in 
 page_load_time_placeholder = st.sidebar.empty()
 
 # this magic command syntax will only work in the main file, other files will require the usage of st.write or st.markdown
+
 '# Streamlit quick reference'
 
 'This is just a quick demo. You should prefer the [official API reference](https://docs.streamlit.io/en/stable/api.html). Have a look at the [streamlit cheat sheet](https://share.streamlit.io/daniellewisdl/streamlit-cheat-sheet/app.py)'
@@ -73,6 +74,11 @@ with st.echo():
 
 # load components from script files
 load_components()
+
+# about
+st.sidebar.write("# About")
+
+st.sidebar.info("Streamlit quick reference")
 
 # show page load duration in sidebar
 page_load_duration = time.time() - page_load_start_time
