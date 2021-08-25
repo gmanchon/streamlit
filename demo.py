@@ -23,9 +23,17 @@ st.sidebar.radio('Check load time', ('switch from one button to the other', 'in 
 
 page_load_time_placeholder = st.sidebar.empty()
 
-# this magic command syntax will only work in the main file, other files will require the usage of st.write or st.markdown
 
-'# Streamlit quick reference'
+def magic_function():
+    """
+    the magic command syntax only works in the main file
+    other files require the usage of st.write or st.markdown
+    """
+
+    pass
+
+
+st.markdown('# Streamlit quick reference')
 
 'This is just a quick demo. You should prefer the [official API reference](https://docs.streamlit.io/en/stable/api.html). Have a look at the [streamlit cheat sheet](https://share.streamlit.io/daniellewisdl/streamlit-cheat-sheet/app.py)'
 
@@ -37,8 +45,7 @@ st.write(f'<a name="Import"></a>', unsafe_allow_html=True)
 
 '# Import'
 
-with st.echo():
-    import streamlit as st
+st.code("import streamlit as st")
 
 st.write(f'<a name="Magic commands"></a>', unsafe_allow_html=True)
 
@@ -71,6 +78,7 @@ st.write(f'<a name="Echo"></a>', unsafe_allow_html=True)
 with st.echo():
     with st.echo():
         st.write('hello 👋')
+
 
 # load components from script files
 load_components()
