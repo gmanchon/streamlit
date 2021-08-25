@@ -5,6 +5,10 @@ import numpy as np
 import pandas as pd
 
 
+def title():
+    return "Area chart 📈"
+
+
 def run():
 
     with st.echo():

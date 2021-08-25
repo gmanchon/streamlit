@@ -5,6 +5,10 @@ import pandas as pd
 import numpy as np
 
 
+def title():
+    return "Line chart 📉"
+
+
 def run():
 
     with st.echo():
