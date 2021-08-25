@@ -116,7 +116,7 @@ def get_node_anchor(node):
 
     return file_root_to_title(node['name'])
 
-def load_script(script):
+def load_script(script, run=True):
     """
     loads and executes script content
     script is expected to respond to the `title` and `run` functions
@@ -138,15 +138,18 @@ def load_script(script):
         # convert file name to title name
         script_title = file_name_to_title(script_path)
 
-    # create script anchor for sidebar link
-    st.write(f'<a name="{script_title}"></a>', unsafe_allow_html=True)
+    # run script
+    if run:
 
-    # insert script title in page
-    st.markdown(f'# {script_title}')
+        # create script anchor for sidebar link
+        st.write(f'<a name="{script_title}"></a>', unsafe_allow_html=True)
 
-    # insert script content in page through its run function
-    if hasattr(module, 'run'):
-        module.run()
+        # insert script title in page
+        st.markdown(f'# {script_title}')
+
+        # insert script content in page through its run function
+        if hasattr(module, 'run'):
+            module.run()
 
     # fill script info
     script['title'] = script_title
@@ -188,7 +191,7 @@ def populate_sidebar(nodes):
 
     st.sidebar.markdown(toc, unsafe_allow_html=True)
 
-def load_components():
+def load_components(magic_function):
     """
     executes all script files in the components directory
     """
@@ -206,13 +209,14 @@ def load_components():
         if node['type'] != 'script':
             continue
 
-        load_script(node)
+        # load script title
+        load_script(node, run=False)
 
     # the sidebar widgets in the components scripts gets injected in the sidebar
     # before the menu links because the scripts are loaded first
     # it is required to load the scripts first to retrieve their custom title
 
     # fill sidebar with links to script content
-    populate_sidebar(nodes)
+    populate_sidebar(nodes, magic_function)
 
     # st.write(nodes)
