@@ -2,6 +2,10 @@
 import streamlit as st
 
 
+def title():
+    return 'File uploader 🎥'
+
+
 def run():
 
     with st.echo():
