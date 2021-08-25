@@ -18,7 +18,6 @@ def run():
 
             @st.cache
             def get_scraping_data():
-                print('get_scraping_data called')
 
                 url = 'https://www.iubenda.com/privacy-policy/7967062/legal'
                 response = requests.get(url)

@@ -16,7 +16,7 @@ def run():
     with st.echo():
         @st.cache
         def get_dataframe_data():
-            print('get_dataframe_data called')
+
             return pd.DataFrame(
                     np.random.randn(10, 5),
                     columns=('col %d' % i for i in range(5))

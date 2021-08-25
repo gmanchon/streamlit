@@ -9,7 +9,7 @@ def run():
     with st.echo():
         @st.cache
         def get_slider_data():
-            print('get_slider_data called')
+
             return pd.DataFrame({
                   'first column': list(range(1, 11)),
                   'second column': np.arange(10, 101, 10)

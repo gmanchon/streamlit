@@ -14,7 +14,7 @@ def run():
     with st.echo():
         @st.cache
         def get_altair_data():
-            print('get_altair_data called')
+
             return pd.DataFrame(
                     np.random.randn(200, 3),
                     columns=['a', 'b', 'c']

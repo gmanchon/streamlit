@@ -9,7 +9,7 @@ def run():
     with st.echo():
         @st.cache
         def get_plotly_data():
-            print('get_plotly_data called')
+
             z_data = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/api_docs/mt_bruno_elevation.csv')
             z = z_data.values
             sh_0, sh_1 = z.shape
