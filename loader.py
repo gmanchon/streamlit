@@ -14,6 +14,7 @@ import importlib.util
 
 import json
 
+
 def recursive_iterate_directories(path, level):
     """
     recursively iterates through directories
@@ -102,12 +103,15 @@ def recursive_iterate_directories(path, level):
 
     return nodes
 
+
 def file_root_to_title(file_root):
     return file_root.replace('_', ' ').capitalize()
+
 
 def file_name_to_title(file_path):
     file_root = split(file_path)[1][:-3] # remove path then remove .py
     return file_root_to_title(file_root)
+
 
 def get_node_anchor(node):
 
@@ -116,7 +120,8 @@ def get_node_anchor(node):
 
     return file_root_to_title(node['name'])
 
-def load_script(script):
+
+def load_script(script, run=True):
     """
     loads and executes script content
     script is expected to respond to the `title` and `run` functions
@@ -138,34 +143,34 @@ def load_script(script):
         # convert file name to title name
         script_title = file_name_to_title(script_path)
 
-    # create script anchor for sidebar link
-    st.write(f'<a name="{script_title}"></a>', unsafe_allow_html=True)
+    # run script
+    if run:
 
-    # insert script title in page
-    st.markdown(f'# {script_title}')
+        # create script anchor for sidebar link
+        st.write(f'<a name="{script_title}"></a>', unsafe_allow_html=True)
 
-    # insert script content in page through its run function
-    if hasattr(module, 'run'):
-        module.run()
+        # insert script title in page
+        st.markdown(f'# {script_title}')
+
+        # insert script content in page through its run function
+        if hasattr(module, 'run'):
+            module.run()
 
     # fill script info
     script['title'] = script_title
 
-def populate_sidebar(nodes):
+
+def populate_sidebar(nodes, magic_function):
     """
     adds links to the content of the scripts in the sidebar
     """
 
-    # hard coded toc allows to keep some widgets demo in the main file
-    # useful in particular in order to demonstrate the magic commands
-    hard_coded_toc = '''<h1>Foreword</h1>
-        <a href="#Import">Import</a><br>
-        <a href="#Magic commands">Magic commands</a><br>
-        <a href="#Inline documentation">Inline documentation</a><br>
-        <a href="#Echo">Echo</a><br>
-    '''
+    # create menu
+    menu_items = dict(
+        Streamlit=dict(
+            function=magic_function))
 
-    toc = hard_coded_toc
+    current_menu_item = ""
 
     # create sidebar table of content
     for node in nodes:
@@ -174,21 +179,86 @@ def populate_sidebar(nodes):
 
         if node_type == 'title':
 
-            node_name = node['name'].capitalize()
+            # capitalize name if it contains no uppercase letters
+            node_name = node['name'].capitalize() if node['name'].lower() == node['name'] else node['name']
             node_level = node['level']
 
             if node_level >= 3:
                 node_level += 2
 
-            toc += f"""<h{node_level}>{node_name}</h{node_level}>"""
+            toc_item = f"""<h{node_level}>{node_name}</h{node_level}>"""
+
+            if node_level == 2:
+
+                current_menu_item = node_name
+
+                menu_items[current_menu_item] = dict(
+                    name=current_menu_item,
+                    nodes=[node],
+                    toc_items=[toc_item])
+
+            elif node_level > 2:
+
+                # add sub headers to toc
+                menu_items[current_menu_item]["toc_items"].append(toc_item)
 
         elif node_type == 'script':
+
             anchor = get_node_anchor(node)
-            toc += f"""<a href="#{anchor}">{anchor}</a><br>"""
+            toc_item = f"""<a href="#{anchor}">{anchor}</a><br>"""
 
-    st.sidebar.markdown(toc, unsafe_allow_html=True)
+            menu_items[current_menu_item]["nodes"].append(node)
+            menu_items[current_menu_item]["toc_items"].append(toc_item)
 
-def load_components():
+    # create menu
+    st.sidebar.write("# Navigation")
+
+    menu_item = st.sidebar.radio("Go to", menu_items.keys())
+
+    # show content
+    selected_menu_item = menu_items[menu_item]
+
+    menu_item_function = selected_menu_item.get("function")
+    menu_item_name = selected_menu_item.get("name")
+    menu_item_nodes = selected_menu_item.get("nodes")
+    menu_item_toc_items = selected_menu_item.get("toc_items")
+
+    if menu_item_function is not None:
+
+        # hard coded toc allows to keep some widgets demo in the main file
+        # useful in particular in order to demonstrate the magic commands
+        hard_coded_toc = '''<h1>Streamlit</h1>
+            <a href="#Import">Import</a><br>
+            <a href="#Magic commands">Magic commands</a><br>
+            <a href="#Inline documentation">Inline documentation</a><br>
+            <a href="#Echo">Echo</a><br>
+        '''
+
+        st.sidebar.markdown(hard_coded_toc, unsafe_allow_html=True)
+
+        # run magic function
+        menu_item_function()
+
+    else:
+
+        st.write(f'# Streamlit quick reference - {menu_item_name}')
+
+        # inject menu items
+        toc = "".join(menu_item_toc_items)
+
+        st.sidebar.markdown(toc, unsafe_allow_html=True)
+
+        # inject nodes
+        for node in menu_item_nodes:
+
+            # ignore non scripts
+            if node['type'] != 'script':
+                continue
+
+            load_script(node, run=True)
+
+
+def load_components(magic_function):
     """
     executes all script files in the components directory
     """
@@ -206,13 +276,14 @@ def load_components():
         if node['type'] != 'script':
             continue
 
-        load_script(node)
+        # load script title
+        load_script(node, run=False)
 
     # the sidebar widgets in the components scripts gets injected in the sidebar
     # before the menu links because the scripts are loaded first
     # it is required to load the scripts first to retrieve their custom title
 
     # fill sidebar with links to script content
-    populate_sidebar(nodes)
+    populate_sidebar(nodes, magic_function)
 
     # st.write(nodes)

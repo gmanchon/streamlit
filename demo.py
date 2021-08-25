@@ -13,8 +13,8 @@ import time
 st.set_page_config(
     page_title="Quick reference",
     page_icon="🐍",
-    layout="centered", # wide
-    initial_sidebar_state="auto") # collapsed
+    layout="centered",  # wide
+    initial_sidebar_state="auto")  # collapsed
 
 # process page load duration
 page_load_start_time = time.time()
@@ -23,56 +23,73 @@ st.sidebar.radio('Check load time', ('switch from one button to the other', 'in 
 
 page_load_time_placeholder = st.sidebar.empty()
 
-# this magic command syntax will only work in the main file, other files will require the usage of st.write or st.markdown
-'# Streamlit quick reference'
 
-'This is just a quick demo. You should prefer the [official API reference](https://docs.streamlit.io/en/stable/api.html). Have a look at the [streamlit cheat sheet](https://share.streamlit.io/daniellewisdl/streamlit-cheat-sheet/app.py)'
+def magic_function():
+    """
+    the magic command syntax only works in the main file
+    other files require the usage of st.write or st.markdown
+    """
 
-'The sidebar (arrow on the top left of the page) allows you to navigate in the page and displays the page load time. You may check how the prod location affects the load time: [EU version](https://wagon-data-streamlit-eu.herokuapp.com/) vs [US version](https://wagon-data-streamlit.herokuapp.com/)'
+    st.markdown('# Streamlit quick reference')
 
-'This app was [created using streamlit](https://www.imdb.com/title/tt1375666/). The code of the page is visible [here](https://github.com/gmanchon/streamlit). If you are just getting started, an older yet simpler version of the code is available [here](https://github.com/gmanchon/streamlit/tree/main)'
+    st.info("""
+    References:
+    - [Streamlit API reference](https://docs.streamlit.io/en/stable/api.html)
+    - [Streamlit cheat sheet](https://share.streamlit.io/daniellewisdl/streamlit-cheat-sheet/app.py)
+    """)
 
-st.write(f'<a name="Import"></a>', unsafe_allow_html=True)
+    st.write('<a name="Import"></a>', unsafe_allow_html=True)
 
-'# Import'
+    '# Import'
 
-with st.echo():
-    import streamlit as st
+    st.code("import streamlit as st")
 
-st.write(f'<a name="Magic commands"></a>', unsafe_allow_html=True)
+    st.write('<a name="Magic commands"></a>', unsafe_allow_html=True)
 
-'# Magic commands'
+    '# Magic commands'
 
-'All strings or objects in the **main** script file will automatically be rendered in the page by streamlit as if `write` or `mardown` were used. This only works in the main file, other script files need to use `st.write` or `st.markdown` in order to display objects or text'
+    'All strings or objects in the **main** script file will automatically be rendered in the page by streamlit as if `st.write` or `st.mardown` were used. This only works in the main file, other script files need to use `st.write` or `st.markdown` in order to display objects or text'
 
-with st.echo():
-    'some text or **markdown**'
-
-    {
-        'hello' : True
-    }
-
-st.write(f'<a name="Inline documentation"></a>', unsafe_allow_html=True)
-
-'# Inline documentation'
-
-'Any streamlit method called without parenthesis and arguments will display its documentation'
-
-with st.echo():
-    st.echo
-
-st.write(f'<a name="Echo"></a>', unsafe_allow_html=True)
-
-'# Echo'
-
-'Allows to display a block of code and then execute it. This is what is used on this page in order to demonstrate the usage of the various streamlit elements'
-
-with st.echo():
     with st.echo():
-        st.write('hello 👋')
+        'some text or **markdown**'
+
+        {
+            'hello': True
+        }
+
+    st.write('<a name="Inline documentation"></a>', unsafe_allow_html=True)
+
+    '# Inline documentation'
+
+    'Any streamlit method called without parenthesis and arguments will display its documentation'
+
+    with st.echo():
+        st.echo
+
+    st.write('<a name="Echo"></a>', unsafe_allow_html=True)
+
+    '# Echo'
+
+    'Allows to display a block of code and then execute it. This is what is used on this page in order to demonstrate the usage of the various streamlit elements'
+
+    with st.echo():
+        with st.echo():
+            st.write('hello 👋')
+
 
 # load components from script files
-load_components()
+load_components(magic_function)
+
+# about
+st.sidebar.write("# About")
+
+st.sidebar.info("""
+This app was created using [Streamlit](https://streamlit.io/)
+
+The code of the page is visible [here](https://github.com/gmanchon/streamlit). If you are just getting started, an older yet simpler version of the code is available [here](https://github.com/gmanchon/streamlit/tree/main)
+
+Hosting: [EU](https://wagon-data-streamlit-eu.herokuapp.com/), [US](https://wagon-data-streamlit.herokuapp.com/)
+""")
 
 # show page load duration in sidebar
 page_load_duration = time.time() - page_load_start_time

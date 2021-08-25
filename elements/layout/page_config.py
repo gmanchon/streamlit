@@ -1,12 +1,12 @@
 
 import streamlit as st
 
+
 def title():
     return 'Page configuration 🐍'
 
-def run():
 
-    st.write('🚧 Page configuration is a beta feature and should evolve soon 🚧')
+def run():
 
     st.write('Page configuration allows to configure the favicon and title of the page in the browser tab, as well as the initial state of the sidebar and the general layout of the page')
 

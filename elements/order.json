@@ -1,11 +1,16 @@
 [
-  "text",
-  "code",
-  "controls",
-  "data",
-  "third party",
-  "advanced",
-  "layout",
-  "session state",
-  "other"
+    "text & code",
+    "user controls",
+    "data",
+    "cache",
+    "charts",
+    "maps",
+    "matplotlib",
+    "plotly",
+    "altair",
+    "folium",
+    "HTML & CSS",
+    "layout",
+    "session state",
+    "other"
 ]
