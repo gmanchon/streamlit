@@ -32,12 +32,6 @@ def magic_function():
 
     st.markdown('# Streamlit quick reference')
 
-    'This is just a quick demo. You should prefer the [official API reference](https://docs.streamlit.io/en/stable/api.html). Have a look at the [streamlit cheat sheet](https://share.streamlit.io/daniellewisdl/streamlit-cheat-sheet/app.py)'
-
-    'The sidebar (arrow on the top left of the page) allows you to navigate in the page and displays the page load time. You may check how the prod location affects the load time: [EU version](https://wagon-data-streamlit-eu.herokuapp.com/) vs [US version](https://wagon-data-streamlit.herokuapp.com/)'
-
-    'This app was [created using streamlit](https://www.imdb.com/title/tt1375666/). The code of the page is visible [here](https://github.com/gmanchon/streamlit). If you are just getting started, an older yet simpler version of the code is available [here](https://github.com/gmanchon/streamlit/tree/main)'
-
     st.write('<a name="Import"></a>', unsafe_allow_html=True)
 
     '# Import'
@@ -83,7 +77,18 @@ load_components(magic_function)
 # about
 st.sidebar.write("# About")
 
-st.sidebar.info("Streamlit quick reference")
+st.sidebar.info("""
+This app was created using streamlit. The code of the page is visible [here](https://github.com/gmanchon/streamlit). If you are just getting started, an older yet simpler version of the code is available [here](https://github.com/gmanchon/streamlit/tree/main)
+
+Hosting: [EU](https://wagon-data-streamlit-eu.herokuapp.com/), [US](https://wagon-data-streamlit.herokuapp.com/)
+""")
+
+st.sidebar.write("# References")
+
+st.sidebar.info("""
+- [streamlit official API reference](https://docs.streamlit.io/en/stable/api.html)
+- [streamlit cheat sheet](https://share.streamlit.io/daniellewisdl/streamlit-cheat-sheet/app.py)
+""")
 
 # show page load duration in sidebar
 page_load_duration = time.time() - page_load_start_time
