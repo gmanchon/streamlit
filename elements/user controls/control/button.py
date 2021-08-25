@@ -7,7 +7,7 @@ def run():
     with st.echo():
 
         if st.button('click me'):
-            # print is visible in server output, not in the page
+            # print is visible in the server output, not in the page
             print('button clicked!')
             st.write('I was clicked 🎉')
             st.write('Further clicks are not visible but are executed')
