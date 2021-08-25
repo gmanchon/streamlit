@@ -227,7 +227,7 @@ def populate_sidebar(nodes, magic_function):
             <a href="#Echo">Echo</a><br>
         '''
 
-        toc = hard_coded_toc
+        st.sidebar.markdown(hard_coded_toc, unsafe_allow_html=True)
 
         # run magic function
         menu_item_function()
@@ -235,6 +235,11 @@ def populate_sidebar(nodes, magic_function):
     else:
 
         st.write(f'# Streamlit quick reference - {menu_item_name}')
+
+        # inject menu items
+        toc = "".join(menu_item_toc_items)
+
+        st.sidebar.markdown(toc, unsafe_allow_html=True)
 
         # inject nodes
         for node in menu_item_nodes:
@@ -244,11 +249,6 @@ def populate_sidebar(nodes, magic_function):
                 continue
 
             load_script(node, run=True)
-
-        # inject menu items
-        toc = "".join(menu_item_toc_items)
-
-    st.sidebar.markdown(toc, unsafe_allow_html=True)
 
 def load_components(magic_function):
     """
