@@ -6,7 +6,7 @@ import pandas as pd
 
 
 def title():
-    return 'DataFrame'
+    return 'Hiding index'
 
 
 def run():
@@ -23,4 +23,6 @@ def run():
 
         df = get_dataframe_data()
 
-        st.write(df.head())
+        hdf = df.assign(hack='').set_index('hack')
+
+        st.write(hdf.head())

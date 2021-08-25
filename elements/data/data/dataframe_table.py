@@ -6,7 +6,7 @@ import pandas as pd
 
 
 def title():
-    return 'DataFrame'
+    return 'Using a table'
 
 
 def run():
@@ -23,4 +23,4 @@ def run():
 
         df = get_dataframe_data()
 
-        st.write(df.head())
+        st.table(df.head())
