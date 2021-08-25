@@ -30,6 +30,6 @@ def run():
 
         st.write(st.session_state)
 
-        st.write(f"Unpersistent variable: {unpersisted_variable} 👈 the value does not take into account previous page reruns ⛔️")
+        st.write(f"Unpersisted variable: {unpersisted_variable} 👈 the value does not take into account previous page reruns ⛔️")
         st.write(f"Persisted variable: {st.session_state.persisted_variable} 👈 the data is persisted between reruns 👌")
         st.write(f'Persisted variable: {st.session_state["persisted_variable"]}')
