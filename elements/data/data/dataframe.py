@@ -6,14 +6,17 @@ import pandas as pd
 
 import seaborn as sns
 
+
 def title():
     return 'DataFrame'
+
 
 def run():
 
     st.write('## Default rendering')
 
     with st.echo():
+
         @st.cache
         def get_dataframe_data():
 
@@ -29,6 +32,7 @@ def run():
     st.write('## Hiding index')
 
     with st.echo():
+
         hdf = df.assign(hack='').set_index('hack')
 
         st.write(hdf.head())
@@ -36,6 +40,7 @@ def run():
     st.write('## Using a table')
 
     with st.echo():
+
         st.table(df.head())
 
     st.write('## Using pandas styler')

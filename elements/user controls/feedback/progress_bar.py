@@ -1,9 +1,11 @@
 
 import streamlit as st
 
+
 def run():
 
     with st.echo():
+
         if st.checkbox('Show progress bar'):
             import time
 

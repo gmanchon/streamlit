@@ -4,8 +4,10 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 
+
 def title():
     return 'Cache 🚀'
+
 
 def run():
 
@@ -32,6 +34,7 @@ def run():
         ''')
 
     with st.echo():
+
         df = pd.DataFrame(
                 np.random.randn(3, 3),
                 columns=['a', 'b', 'c'])
@@ -53,6 +56,7 @@ def run():
         ''')
 
     with st.echo():
+
         @st.cache
         def get_cached_data():
             return pd.DataFrame(

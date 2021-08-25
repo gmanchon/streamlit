@@ -4,9 +4,11 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 
+
 def run():
 
     with st.echo():
+
         @st.cache
         def get_slider_data():
 

@@ -1,6 +1,7 @@
 
 import streamlit as st
 
+
 def run():
 
     st.write('Since the streamlit elements are injected in the page in the order in which they are encountered in the code as it is being interpreted, they are displayed sequentially one after the other in the order in which they are in the code... Using placeholders allow to define a position in the page to display an element which will be filled later')

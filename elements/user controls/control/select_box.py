@@ -4,12 +4,15 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 
+
 def title():
     return 'Select box, multi select'
+
 
 def run():
 
     with st.echo():
+
         @st.cache
         def get_select_box_data():
 

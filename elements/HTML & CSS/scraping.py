@@ -1,8 +1,10 @@
 
 import streamlit as st
 
+
 def title():
     return 'Scrapping Le Wagon Privacy Policy! 🥳'
+
 
 def run():
 
@@ -12,7 +14,9 @@ def run():
         st.write('<link href="https://www.iubenda.com/assets/privacy_policy-4925cabc28812855d7c0a24b1f0c961c.css" media="screen" rel="stylesheet" type="text/css" />', unsafe_allow_html=True)
 
     if st.checkbox('1. Inject the privacy policy 😋'):
+
         with st.echo():
+
             import requests
             from bs4 import BeautifulSoup
 

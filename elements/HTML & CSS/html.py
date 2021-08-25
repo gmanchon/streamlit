@@ -1,8 +1,10 @@
 
 import streamlit as st
 
+
 def title():
     return 'Injecting HTML 🧙‍♂️'
+
 
 def run():
 

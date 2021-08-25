@@ -1,8 +1,10 @@
 
 import streamlit as st
 
+
 def title():
     return 'Page configuration 🐍'
+
 
 def run():
 

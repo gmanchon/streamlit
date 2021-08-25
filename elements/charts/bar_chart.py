@@ -4,9 +4,11 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 
+
 def run():
 
     with st.echo():
+
         @st.cache
         def get_histo():
 
@@ -23,6 +25,7 @@ def run():
         st.bar_chart(hist_values)
 
     with st.echo():
+
         @st.cache
         def get_bar_chart_data():
 

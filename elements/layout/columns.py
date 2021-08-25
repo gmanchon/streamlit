@@ -1,6 +1,7 @@
 
 import streamlit as st
 
+
 def run():
 
     st.write('Using columns allows to display widgets side by side')

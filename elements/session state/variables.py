@@ -1,7 +1,9 @@
 import streamlit as st
 
+
 def title():
     return 'Session variables'
+
 
 def run():
 
