@@ -34,8 +34,8 @@ def magic_function():
 
     st.info("""
     References:
-    - [streamlit official API reference](https://docs.streamlit.io/en/stable/api.html)
-    - [streamlit cheat sheet](https://share.streamlit.io/daniellewisdl/streamlit-cheat-sheet/app.py)
+    - [Streamlit API reference](https://docs.streamlit.io/en/stable/api.html)
+    - [Streamlit cheat sheet](https://share.streamlit.io/daniellewisdl/streamlit-cheat-sheet/app.py)
     """)
 
     st.write('<a name="Import"></a>', unsafe_allow_html=True)
