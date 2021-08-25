@@ -9,10 +9,12 @@ def run():
 
             from scipy import misc
 
-            face = misc.face(gray=True)
-            plt.imshow(face, cmap='gray')
+            fig, ax = plt.subplots()
 
-            st.pyplot()
+            face = misc.face(gray=True)
+            ax.imshow(face, cmap='gray')
+
+            st.pyplot(fig)
         else:
             from PIL import Image
             image = Image.open('images/matplotlib.png')
