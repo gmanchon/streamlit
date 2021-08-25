@@ -84,7 +84,9 @@ load_components(magic_function)
 st.sidebar.write("# About")
 
 st.sidebar.info("""
-This app was created using streamlit. The code of the page is visible [here](https://github.com/gmanchon/streamlit). If you are just getting started, an older yet simpler version of the code is available [here](https://github.com/gmanchon/streamlit/tree/main)
+This app was created using [Streamlit](https://streamlit.io/)
+
+The code of the page is visible [here](https://github.com/gmanchon/streamlit). If you are just getting started, an older yet simpler version of the code is available [here](https://github.com/gmanchon/streamlit/tree/main)
 
 Hosting: [EU](https://wagon-data-streamlit-eu.herokuapp.com/), [US](https://wagon-data-streamlit.herokuapp.com/)
 """)
