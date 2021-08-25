@@ -179,7 +179,8 @@ def populate_sidebar(nodes, magic_function):
 
         if node_type == 'title':
 
-            node_name = node['name'].capitalize()
+            # capitalize name if it contains no uppercase letters
+            node_name = node['name'].capitalize() if node['name'].lower() == node['name'] else node['name']
             node_level = node['level']
 
             if node_level >= 3:
